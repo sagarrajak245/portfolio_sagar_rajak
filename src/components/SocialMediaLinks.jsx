@@ -24,7 +24,7 @@ function SocialMediaLinks() {
 
 <SiLeetcode />
 </a>
-<a  href="#"  target="_blank" rel="noopener noreferrer" className="text-white hover:text-red-400 transition-colors duration-300" >
+<a  href="#resume"  target="_blank" rel="noopener noreferrer" className="text-white hover:text-red-400 transition-colors duration-300" >
 
 <IoNewspaperOutline />
 </a>

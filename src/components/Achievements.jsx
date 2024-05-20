@@ -10,7 +10,7 @@ function Achievements() {
         transition={{duration:1}}
 
 
-        className='my-20 text-center text-4xl underline decoration-1'>Achievements</motion.h1>
+        className='my-20 text-center text-4xl '>Achievements</motion.h1>
         <div>
             {Achi.map((ach, index) => (
             <div key={index} className='mb-8  flex flex-wrap lg:justify-center'>

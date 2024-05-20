@@ -81,7 +81,7 @@ export const PROJECTS = [
 ];
 
 export const CONTACT = {
-  Address: "new mumbai, maharashtra, India",
+  Address: "New mumbai, Maharashtra, India.",
   phoneNo: "8669101264 ",
   email: "sagarrajak245@gmail.com",
 };

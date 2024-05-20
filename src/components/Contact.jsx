@@ -38,7 +38,7 @@ function Contact() {
             transition={{duration:1}}
             
             >
-        <span >email address :    <a href="#"  className='underline decoration-1  text-silver '>{CONTACT.email}</a>
+        <span >email address :    <a href="#"  className='  text-silver '>{CONTACT.email}</a>
         </span> 
         </motion.div>   
         </div> 
