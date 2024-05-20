@@ -17,7 +17,7 @@ function Navbar( ) {
     <nav className='   mb-20   flex  items-center justify-between    py-2'>
 <div className='flex flex-shrink-0 items-center p '>
 <img src={logo} className='ml-2  h-14 w-auto pl-2' alt="logo" />
-<div className='ml-10 mt-2'><Swapicons/></div>
+<div className='ml-6 mt-2'><Swapicons/></div>
 </div> 
 
 
