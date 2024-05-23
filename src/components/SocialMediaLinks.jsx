@@ -1,4 +1,6 @@
 import React from 'react';
+
+// import resume from "..assets/sagarrajak_resume.pdf";
 import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { IoNewspaperOutline } from "react-icons/io5";
 import { RiTwitterXLine } from 'react-icons/ri';
@@ -17,14 +19,14 @@ function SocialMediaLinks() {
         <RiTwitterXLine />
       </a>
       <a href="https://www.instagram.com/sagarrajak003" target="_blank" rel="noopener noreferrer" className="text-white hover:text-red-400 transition-colors duration-300">
-        <FaInstagram />
+        <FaInstagram /> 
       </a>
 
 <a  href=" https://leetcode.com/u/sagarrajak245/"  target="_blank" rel="noopener noreferrer" className="text-white hover:text-red-400 transition-colors duration-300" >
 
 <SiLeetcode />
 </a>
-<a  href="https://drive.google.com/drive/u/0/folders/1lo9t36Olet0_6KJhpVvVzMTmcZiclEOa"  target="_blank" rel="noopener noreferrer" className="text-white hover:text-red-400 transition-colors duration-300" >
+<a  href={"https://drive.google.com/drive/u/0/folders/1lo9t36Olet0_6KJhpVvVzMTmcZiclEOa"}  target="_blank" rel="noopener noreferrer" className="text-white hover:text-red-400 transition-colors duration-300" >
 
 <IoNewspaperOutline />
 </a>
@@ -34,3 +36,5 @@ function SocialMediaLinks() {
 }
 
 export default SocialMediaLinks; 
+
+// "https://drive.google.com/drive/u/0/folders/1lo9t36Olet0_6KJhpVvVzMTmcZiclEOa"
