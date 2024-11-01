@@ -1,4 +1,4 @@
-import React from 'react';
+
 // import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';
 // import { RiTwitterXLine } from "react-icons/ri";
 import logo from '../assets/dev.png';
