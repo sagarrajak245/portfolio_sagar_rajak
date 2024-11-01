@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import React from 'react'
+
 import { CONTACT } from '../constants'
 
 function Contact() {

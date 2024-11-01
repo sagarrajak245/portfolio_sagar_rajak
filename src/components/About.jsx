@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import React from 'react'
+
 import aboutme from '../assets/about.jpg'
 import { ABOUT_TEXT } from '../constants/index'
 
@@ -16,7 +16,7 @@ function About() {
             initial={{opacity:0,x:-100}}
             transition={{duration:0.5}}
             
-            className='w-full  lg:w-1/2 lg:p-8'> 
+            className='w-full  lg:w-1/2 lg:p-8'>   
 <div  className='flex items-center justify-center'>
 
     <img src={aboutme }  alt="about"  className='rounded-xl' />

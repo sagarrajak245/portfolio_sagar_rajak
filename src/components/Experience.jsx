@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import React from 'react';
+
 import { EXPERIENCES } from '../constants/index';
 
 function Experience() {
@@ -54,6 +54,6 @@ className='w-full max-w-xl  lg:w-3/4'>
       </div>
     </div>
   );
-};
+}
 
 export default Experience

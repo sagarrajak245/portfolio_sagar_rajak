@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import React from 'react';
+
 import { FaFigma, FaGitAlt, FaHtml5, FaJava, FaNode, FaPython } from 'react-icons/fa';
 import { RiReactjsFill, RiTailwindCssFill } from "react-icons/ri";
 import { SiFirebase, SiFlutter, SiMongodb, SiMysql } from "react-icons/si";

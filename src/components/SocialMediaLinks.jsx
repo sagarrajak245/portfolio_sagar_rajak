@@ -1,4 +1,4 @@
-import React from 'react';
+
 
 // import resume from "..assets/sagarrajak_resume.pdf";
 import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';

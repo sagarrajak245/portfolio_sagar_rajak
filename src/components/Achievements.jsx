@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion'
-import React from 'react'
 import { Achi } from '../constants/index'
 function Achievements() {
   return (
@@ -30,7 +29,7 @@ function Achievements() {
                 
                 
                 className='w-full max-w-xl  lg:w-3/4'>
-                <h6 className='mb-2 font-semibold'>{ach.title}  
+                <h6 className='mb-2 font-semibold'>{ach.title}   
                 </h6>
                 <p className='mb-4 text-neutral-400'>{ach.description}</p>
                

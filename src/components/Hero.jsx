@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion'
-import React from 'react'
 import portfoliopic from '../assets/sprofile2.png'
 import { HERO_CONTENT } from '../constants/index'
 

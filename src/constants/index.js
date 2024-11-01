@@ -16,10 +16,10 @@ export const ABOUT_TEXT = ` Hi, I'm Sagar Rajak, a second-year AI and Computer S
 export const EXPERIENCES = [ 
   {
     year: "2023 - Present",
-    role: "JR.Technical officer",
+    role: "SR.Technical officer",
     company: "AI Colegion",
     description: `Collaborated with a team in developing and maintaining web applications using JavaScript, React.js, and Node.js. Implemented RESTful APIs and integrated with MongoDB databases. Collaborated with stakeholders to define project requirements and timelines.`,
-    technologies: ["Javascript", "React.js", "figma", "mongoDB"],
+    technologies: ["Javascript", "React.js", "figma", "mongoDB","Multi agent system" ],
   },
   {
     year: " 2023- 2024",
