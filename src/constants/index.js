@@ -1,15 +1,16 @@
 import ac1 from "../assets/ac1.jpg";
 import ac2 from "../assets/ac2.jpg";
+import pro8 from "../assets/projects/aqi.png";
+import pro7 from "../assets/projects/crew_ai.png";
+import pro5 from "../assets/projects/gdp.png";
 import pro1 from "../assets/projects/pro1.png";
 import pro2 from "../assets/projects/pro2.png";
-import pro3 from "../assets/projects/pro3.jpg";
 import pro4 from "../assets/projects/pro4.jpg";
-
 import pro6 from "../assets/projects/pro6.jpg";
 
 export const HERO_CONTENT = `I'm a passionate Full-Stack Developer with expertise in building scalable webapps. I also explore Machine Learning and AI agents to craft intelligent, data-driven solutions. I thrive on turning ideas into impactful digital experiences`;
 
-export const ABOUT_TEXT = ` Hi, I'm Sagar Rajak, a third-year B.E. student in Artificial Intelligence and Data Science at VESIT, Mumbai. I'm a passionate Full-Stack Developer and AI enthusiast with a strong foundation in MERN stack, Flutter, and modern database systems like MongoDB, MySQL, and PostgreSQL.
+export const ABOUT_TEXT = ` Hi, I'm Sagar Rajak, a third-year B.E. student in Artificial Intelligence and Data Science at VESIT, Mumbai with Current Cgpa of 9.2 . I'm a passionate Full-Stack Developer and AI enthusiast with a strong foundation in MERN stack, Flutter, and modern database systems like MongoDB, MySQL, and PostgreSQL.
 
 Beyond full-stack development, I have hands-on experience in Machine Learning, Time Series Analysis, and LLM-powered applications. I've built intelligent systems using CrewAI, LangChain, and Flask-based LLM backends to automate workflows like research, writing, and social media post generation.
 
@@ -18,23 +19,45 @@ I've conducted ML workshops, mentored peers, and delivered practical projects—
 I'm always excited to take on new challenges, collaborate with forward-thinking teams, and contribute to innovative tech solutions that make an impact.`;
 
 export const EXPERIENCES = [
+
   {
-    year: "2023 - Present",
+    year: "4 Nov(2024) - 4 Feb(2025)",
+    role: "Backend Developer",
+    company: "Kinzy club pvt Ltd",
+    description: `• Built secure JWT-based authentication with interceptors and route protection for high user traffic.
+• Enhanced PostgreSQL performance by resolving full scans, adding indexes, and optimizing queries.
+• Implemented Redis-backed scalable feed system using partial active indexing to lower DB load.
+• Dockerized microservices and scheduled distributed tasks with node locking to avoid conflicts
+• Developed node scheduler for server in distributed system wrote unit test .`,
+    technologies: ["Spring Boot", "Maven", "Docker", "Redis", "JOOQ", "PostgreSQL", "Spring-Scheduler"],
+    certificate: ""
+  },
+
+  {
+    year: "Aug 2023 - Present",
     role: "SR.Technical officer",
     company: "AI Colegion",
-    description: `Collaborated with a team in developing and maintaining web applications using JavaScript, React.js, and Node.js. Implemented RESTful APIs and integrated with MongoDB databases. Collaborated with stakeholders to define project requirements and timelines.`,
+    description: `•Served as a technical officer, collaborating with members on MERN stack projects.
+• Conducted a Flutter workshop for 180+ students, contributing as an instructor.
+• Led a Machine Learning workshop for 100+ students, teaching foundational ML concepts`,
     technologies: ["Javascript", "React.js", "figma", "mongoDB", "Multi agent AI system", "flutter"],
   },
   {
-    year: " 2023- 2024",
+    year: " July 2023- July 2024",
     role: "JR.Technical officer",
-    company: "CSI_VESIT",
-    description: `SErved as technical officer in CSI_VESIT, where I developed and maintained web applications using JavaScript, React.js, and Node.js. Designed and implemented RESTful APIs for data communication. Collaborated with cross-functional teams .conducted mern stack and open cv workshops`,
+    company: "CSI VESIT",
+    description: `• Collaborated with the team to manage an AI-powered CSI app.
+
+• Conducted a workshop on OpenCV for ~180 students; served as a Teaching Assistant.
+
+• Led and conducted workshops on MERN Stack Development.
+
+• Organized technical events such as Hidden Cypher, Sherlock, and Watson.`,
     technologies: ["HTML", "CSS", "Express.js", "mongoDB", "open cv "],
   },
   {
-    year: "2024 - present",
-    role: "opensource contributor",
+    year: "May 2024 - Aug 2024",
+    role: "Opensource Contributor",
     company: "Girl Script Summer of code",
     description: `contributed to open source projects and developed web applications using JavaScript, React.js, and Node.js. Designed and implemented RESTful APIs for data communication. Collaborated with cross-functional teams to define project requirements and timelines.`,
     technologies: ["reactjs", "mongoDB", "Html", "Tailwind css"],
@@ -46,27 +69,27 @@ export const PROJECTS = [
   {
     title: "Twitter clone web app",
     image: pro1,
+    github: "https://github.com/sagarrajak245/fullstackproject-Twitterclone",
     description:
-      "A fully functional twitter clone with features like create tweet, like tweet,comment and user authentication.",
+      `• Developed a full-stack web application clone of twitter Created UI using Reactjs frame work.
+• Created login/signup page added authentication and authorization using jwt token, added the create post like post
+add follower and your personal profile and many other features used mongoDB to collect user data
+• Used react query for endpoint connections and api calling,Set up the server and routing using express js and nodejs`,
     technologies: ["HTML", "CSS", "React-js", "Node.js", "MongoDB", "Express.js", "Tailwind css", "react-query"],
   },
   {
     title: "Expense tracker App",
     image: pro2,
+    github: "https://github.com/sagarrajak245/flutter_projects/tree/master",
     description:
       "An application for keeping the record of expenses , with features such as monthly spent, total income, graphical representation of expenses and progress tracking.",
     technologies: ["Dart", "flutter", "provider"],
   },
-  {
-    title: "Reddit clone ",
-    image: pro3,
-    description:
-      "fully functional reedit clone with flutter and firebase and provider package with login/signup pages",
-    technologies: ["Dart", "flutter", "provider", "firebase"],
-  },
+
   {
     title: "Brain wave AI ui project ",
     image: pro4,
+    github: "https://github.com/sagarrajak245/reactjs_uiproject_brainwave",
     description:
       "A frontend project using react js ,tailwind  css. developed attractive ui and applied some cool feature fully futuristic look",
     technologies: ["HTML", "CSS", "React-js", "Tailwind css"],
@@ -76,11 +99,75 @@ export const PROJECTS = [
   {
     title: "Portfolio Website",
     image: pro6,
+    github: "https://github.com/sagarrajak245/portfolio_1",
     description:
       "A personal portfolio website showcasing projects, skills, and contact information.",
     technologies: ["HTML", "CSS", "React", "Tailwind css", "daisy-ui"],
   },
 
+  {
+    title: "Gdp Analysis (1960 to 2024)",
+    image: pro5,
+    github: "https://github.com/sagarrajak245/ML-project-_4_steps",
+    description:
+      `•Analyzed and visualized GDP per capita trends of 180+ countries from 1960 to 2022; highlighted global economic
+disparities in 2022 using bar charts.
+• Predicted 2023 GDP per capita using Linear Regression and Random Forest; evaluated using MAE, RMSE, and R2
+Score.
+• Clustered countries based on predicted 2023 GDP using K-Means; visualized economic groupings via PCA;
+optimized with Silhouette Score.
+• Conducted leadership-based GDP trend analysis for India; calculated CAGR for each Prime Minister and modeled
+future growth using Logistic Regression.
+• Created timeline visualization mapping India’s GDP growth under various political regimes; evaluated predictive
+model with accuracy and confusion matrix`,
+    technologies: ["numpy", "pandas", "matplotlib", "seaborn", "scikit-learn", "statsmodels"],
+  },
+  {
+    title: "Crew Ai multiagent system",
+    image: pro7,
+    github: "https://github.com/sagarrajak245/crewai_project",
+    description:
+      `• Developed Multi-agents system using crew ai library, agent where acting as researcher ,writer and editor.
+• Created research,writing,editing automated system using LLM models and Crewai library`,
+    technologies: ["openai", "claude", "crew ai framework", "python", "jupyter notebook", "scraping-tools"],
+  },
+  {
+    title: " Air Quality Index (AQI) Prediction System ",
+    image: pro8,
+    github: "https://github.com/sagarrajak245/AQI_Predictor/tree/main",
+    description:
+      `🔍 End-to-end ML-powered web application for real-time AQI prediction.
+
+🧠 R used for training an XGBoost regression model on historical pollutant data.
+
+🔗 Flask serves as a backend API that interfaces with the R model via subprocess.
+
+💻 Streamlit frontend provides an interactive UI for user inputs and result display.
+
+📊 Real-time prediction of AQI based on input levels of PM2.5, PM10, NO2, and more.
+
+🌍 Cross-language integration between Python and R ensures modular design.
+
+📈 Visualizations using Plotly to show historical AQI trends and predicted values.
+
+🚀 Designed with a clean architecture, making it easy to deploy and scale.`,
+    technologies: ["R",
+      "XGBoost",
+      "Caret",
+      "jsonlite",
+      "Python",
+      "Flask",
+      "Streamlit",
+      "Plotly",
+      "REST API",
+      "Subprocess (Python ↔ R)",
+      "Pandas",
+      "NumPy",
+      "Scikit-learn",
+      "HTML/CSS",
+      "Git",
+      "GitHub"],
+  },
 
 ];
 

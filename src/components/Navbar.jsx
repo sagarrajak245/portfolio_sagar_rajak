@@ -20,8 +20,8 @@ function Navbar() {
           <SocialMediaLinks />
         </div>
       </nav>
-      {/* Underline below navbar */}
-      <hr className="border-t-1 border-gray-300 " />
+      {/* Underline below navbar
+      <hr className="border-t-1 border-gray-300 " /> */}
     </>
   )
 }

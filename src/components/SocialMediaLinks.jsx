@@ -15,26 +15,26 @@ function SocialMediaLinks() {
       <a href="https://github.com/sagarrajak245" target="_blank" rel="noopener noreferrer" className="text-white hover:text-red-400 transition-colors duration-300">
         <FaGithub />
       </a>
-      <a href="https://twitter.com/Sagar00043"  target="_blank" rel="noopener noreferrer" className="text-white hover:text-red-400 transition-colors duration-300">
+      <a href="https://twitter.com/Sagar00043" target="_blank" rel="noopener noreferrer" className="text-white hover:text-red-400 transition-colors duration-300">
         <RiTwitterXLine />
       </a>
       <a href="https://www.instagram.com/sagarrajak003" target="_blank" rel="noopener noreferrer" className="text-white hover:text-red-400 transition-colors duration-300">
-        <FaInstagram /> 
+        <FaInstagram />
       </a>
 
-<a  href=" https://leetcode.com/u/sagarrajak245/"  target="_blank" rel="noopener noreferrer" className="text-white hover:text-red-400 transition-colors duration-300" >
+      <a href=" https://leetcode.com/u/sagarrajak245/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-red-400 transition-colors duration-300" >
 
-<SiLeetcode />
-</a>
-<a  href={"https://drive.google.com/file/d/1Pu_2SkmOZ9h9tX3sToB_3XEs6SGAV3Xj/view?usp=sharing"}  target="_blank" rel="noopener noreferrer" className="text-white hover:text-red-400 transition-colors duration-300" >
+        <SiLeetcode />
+      </a>
+      <a href={"https://drive.google.com/file/d/1Pu_2SkmOZ9h9tX3sToB_3XEs6SGAV3Xj/view?usp=sharing"} target="_blank" rel="noopener noreferrer" className="text-white hover:text-red-400 transition-colors duration-300" >
 
-<IoNewspaperOutline />
-</a>
+        <IoNewspaperOutline />
+      </a>
 
     </div>
   );
 }
 
-export default SocialMediaLinks; 
+export default SocialMediaLinks;
 
 // "https://drive.google.com/drive/u/0/folders/1lo9t36Olet0_6KJhpVvVzMTmcZiclEOa"

@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 import { FaFigma, FaGitAlt, FaHtml5, FaJava, FaLink, FaNode, FaPython } from 'react-icons/fa';
 import { RiReactjsFill, RiTailwindCssFill } from "react-icons/ri";
-import { SiFirebase, SiFlutter, SiMongodb, SiMysql, SiNumpy, SiPandas, SiScikitlearn } from "react-icons/si";
+import { SiDocker, SiFirebase, SiFlutter, SiMongodb, SiMysql, SiNumpy, SiPandas, SiScikitlearn } from "react-icons/si";
 import { TbBrandCpp } from "react-icons/tb";
 
 const iconVariants = (duration) => ({
@@ -36,7 +36,7 @@ function Technologies() {
       <motion.div
         whileInView={{ opacity: 1, x: 0 }}
         initial={{ opacity: 0, x: -100 }}
-        transition={{ duration: 1, delay: 1.5 }}
+        transition={{ duration: 1, delay: 0.5 }}
         className='flex flex-wrap items-center justify-center gap-4'>
 
         <motion.div
@@ -173,6 +173,13 @@ function Technologies() {
           animate="animate"
           className='rounded-2xl border-4 border-neutral-800 p-4'>
           <SiScikitlearn className='text-7xl text-yellow-500' />
+        </motion.div>
+        <motion.div
+          variants={iconVariants(2.5)}
+          initial="initial"
+          animate="animate"
+          className='rounded-2xl border-4 border-neutral-800 p-4'>
+          <SiDocker className='text-7xl text-blue-500' />
         </motion.div>
 
       </motion.div>
