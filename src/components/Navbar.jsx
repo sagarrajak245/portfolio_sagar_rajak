@@ -8,31 +8,23 @@ import SocialMediaLinks from './SocialMediaLinks';
 
 
 
-function Navbar( ) {    
-
-
-
-
+function Navbar() {
   return (
-    <nav className='   mb-20   flex  items-center justify-between    py-2'>
-<div className='flex flex-shrink-0 items-center p '>
-<img src={logo} className='ml-2  h-14 w-auto pl-2' alt="logo" />
-{/* <div className='ml-6 mt-2'><Swapicons/></div> */}
-</div> 
-
-
-
-<div className='m-6 h-auto item-center text-2xl flex gap-4 justify-center'>
-    <SocialMediaLinks/>   
-   
-</div>
-
-
-
-
-    </nav>
+    <>
+      <nav className='mb-20 flex items-center justify-between py-2'>
+        <div className='flex flex-shrink-0 items-center p'>
+          <img src={logo} className='ml-2 h-14 w-auto pl-2' alt="logo" />
+          {/* <div className='ml-6 mt-2'><Swapicons/></div> */}
+        </div>
+        <div className='m-6 h-auto item-center text-2xl flex gap-4 justify-center'>
+          <SocialMediaLinks />
+        </div>
+      </nav>
+      {/* Underline below navbar */}
+      <hr className="border-t-1 border-gray-300 " />
+    </>
   )
 }
 
-export default Navbar 
+export default Navbar
 
