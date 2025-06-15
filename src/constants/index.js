@@ -1,5 +1,3 @@
-import ac1 from "../assets/ac1.jpg";
-import ac2 from "../assets/ac2.jpg";
 import pro8 from "../assets/projects/aqi.png";
 import pro7 from "../assets/projects/crew_ai.png";
 import pro5 from "../assets/projects/gdp.png";
@@ -184,7 +182,7 @@ export const Achi = [
   {
     title: " ATS Best Technical speaker",
     year: "2022-2023",
-    image: ac1,
+    certificate: "https://drive.google.com/file/d/1KnJcGgiWZh6FeI-YHohjEdvRZ6cmK80j/view?usp=sharing",
 
     description: "I got ATS best technical speaker award. I proposed solution on optical specs and future of it also i talked about how to enhance its use with bionic eyes",
 
@@ -193,14 +191,18 @@ export const Achi = [
   {
     title: " Dalal Street ",
     year: "2022-2023",
-    image: ac2,
+    certificate: "https://drive.google.com/file/d/1H8eG2mUQ4KQS8k0ov242UcIj3nw_fIOw/view?usp=sharing",
 
     description: "It was fun event where you have to show your stock market skills.. learnt many things over there about market and got all basics covered ..our team was in top 15.. ",
 
   },
 
-
-
+  {
+    title: "SIH-2024",
+    year: "2023-2024",
+    certificate: "https://drive.google.com/file/d/11joQAOfic0QfkFDkM0eqqHTxXo6_pwed/view?usp=sharing",
+    description: `Qualified for Smart India Hackathon 2024 under the Smart Education theme with Problem Statement ID: 1615. Our team, GURU-DEVS, developed a full-fledged LMS platform named "Drona" to streamline and enhance the learning and teaching experience. Drona focuses on centralized resource management, progress tracking with data visualizations, AI-powered content creation, and personalized learning path generation. It integrates APIs from Udemy, Coursera, and edX, along with GenAI tools like LangChain and Hugging Face, to dynamically generate content and roadmaps. The platform also includes features like an event planner, student analytics, and real-time recommendations—offering a holistic solution for modern educational needs.`
+  }
 
 
 ];
