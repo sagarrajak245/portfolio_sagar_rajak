@@ -11,7 +11,7 @@ function Experience() {
         transition={{ duration: 0.5 }}
 
 
-        className='my-20 text-center  bg  md:text-6xl font-semibold from-cyan-50 to-purple-400 text-4xl ' >
+        className='my-20 text-center  bg  md:text-6xl font-semibold bg-gradient-to-r from-stone-100 to-stone-700 bg-clip-text text-transparent text-4xl ' >
         Experience
 
       </motion.h1>

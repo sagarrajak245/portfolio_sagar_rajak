@@ -29,7 +29,7 @@ function Technologies() {
         whileInView={{ opacity: 1, y: 0 }}
         initial={{ opacity: 0, y: -100 }}
         transition={{ duration: 1.5 }}
-        className='my-20 font-semibold  text-center text-6xl'>
+        className='my-20 font-semibold  text-center text-4xl md:text-6xl  bg-gradient-to-r from-stone-100 to-stone-700 bg-clip-text text-transparent'>
         Technologies
       </motion.h1>
 

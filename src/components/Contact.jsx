@@ -74,7 +74,7 @@ function Contact() {
         whileInView={{ opacity: 1, y: 0 }}
         initial={{ opacity: 0, y: -100 }}
         transition={{ duration: 1 }}
-        className="my-10 text-center font-semibold md:text-6xl text-4xl "
+        className="my-10 text-center font-semibold md:text-6xl text-4xl bg-gradient-to-r bg-clip-text text-transparent from-stone-50 to-stone-700 "
       >
         Get in Touch...
       </motion.h1>
