@@ -11,26 +11,26 @@ const Timeline = () => {
       bg: 'bg-cyber-blue',
       text: 'text-cyber-blue',
       shadow: 'shadow-cyber-blue/50',
-      badge: 'bg-cyber-blue/20 border-cyber-blue/30'
+      badge: 'bg-cyber-blue/20 border-cyber-blue/30',
     },
     'cyber-purple': {
       bg: 'bg-cyber-purple',
       text: 'text-cyber-purple',
       shadow: 'shadow-cyber-purple/50',
-      badge: 'bg-cyber-purple/20 border-cyber-purple/30'
+      badge: 'bg-cyber-purple/20 border-cyber-purple/30',
     },
     'cyber-green': {
       bg: 'bg-cyber-green',
       text: 'text-cyber-green',
       shadow: 'shadow-cyber-green/50',
-      badge: 'bg-cyber-green/20 border-cyber-green/30'
+      badge: 'bg-cyber-green/20 border-cyber-green/30',
     },
     'cyber-pink': {
       bg: 'bg-cyber-pink',
       text: 'text-cyber-pink',
       shadow: 'shadow-cyber-pink/50',
-      badge: 'bg-cyber-pink/20 border-cyber-pink/30'
-    }
+      badge: 'bg-cyber-pink/20 border-cyber-pink/30',
+    },
   };
 
   const timelineEvents = [
@@ -38,19 +38,21 @@ const Timeline = () => {
       year: '2026',
       title: 'B.E. Graduation',
       subtitle: 'VESIT, Mumbai',
-      description: 'Expected graduation in Artificial Intelligence and Data Science with CGPA 9.2',
+      description:
+        'Expected graduation in Artificial Intelligence and Data Science with CGPA 9.2',
       icon: GraduationCap,
       color: 'cyber-blue',
-      type: 'education'
+      type: 'education',
     },
     {
       year: '2024',
       title: 'Backend Developer',
       subtitle: 'Kinzy Club Pvt Ltd',
-      description: 'Led backend development with Spring Boot, Docker, and Redis optimization',
+      description:
+        'Led backend development with Spring Boot, Docker, and Redis optimization',
       icon: Briefcase,
       color: 'cyber-purple',
-      type: 'work'
+      type: 'work',
     },
     {
       year: '2024',
@@ -59,49 +61,54 @@ const Timeline = () => {
       description: 'Advanced to finals with Drona LMS Platform project',
       icon: Trophy,
       color: 'cyber-green',
-      type: 'achievement'
+      type: 'achievement',
     },
     {
       year: '2023',
       title: 'Sr. Technical Officer',
       subtitle: 'AI-Colegion',
-      description: 'Conducted Flutter/ML workshops for 180+ students, led MERN stack mentorship',
+      description:
+        'Conducted Flutter/ML workshops for 180+ students, led MERN stack mentorship',
       icon: Briefcase,
       color: 'cyber-pink',
-      type: 'work'
+      type: 'work',
     },
     {
       year: '2023',
       title: 'Jr. Technical Officer',
       subtitle: 'CSI VESIT',
-      description: 'Managed CSI AI app, conducted OpenCV workshops, hosted technical events',
+      description:
+        'Managed CSI AI app, conducted OpenCV workshops, hosted technical events',
       icon: Code,
       color: 'cyber-blue',
-      type: 'work'
+      type: 'work',
     },
     {
       year: '2023',
       title: 'Open Source Contributor',
       subtitle: 'GirlScript Summer of Code',
-      description: 'Contributed to multiple OSS projects using React, Tailwind, and MongoDB',
+      description:
+        'Contributed to multiple OSS projects using React, Tailwind, and MongoDB',
       icon: Code,
       color: 'cyber-purple',
-      type: 'project'
+      type: 'project',
     },
     {
       year: '2022',
       title: 'Started B.E. Journey',
       subtitle: 'VESIT, Mumbai',
-      description: 'Began studies in Artificial Intelligence and Data Science',
+      description:
+        'Began studies in Artificial Intelligence and Data Science',
       icon: GraduationCap,
       color: 'cyber-green',
-      type: 'education'
-    }
+      type: 'education',
+    },
   ];
 
   return (
-    <section id="timeline" className="py-20 px-6">
-      <div className="max-w-4xl mx-auto">
+    <section id="timeline" className="py-20 px-4 sm:px-6">
+      <div className="max-w-6xl mx-auto">
+        {/* Section Header */}
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
@@ -109,19 +116,19 @@ const Timeline = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 font-cyber">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-6 font-cyber">
             <span className="bg-gradient-to-r from-stone-100 to-purple-800 bg-clip-text text-transparent">
               Career Timeline
             </span>
           </h2>
-          <p className="text-gray-300 text-lg">
+          <p className="text-gray-300 text-md sm:text-lg">
             My journey through education, work experiences, and achievements
           </p>
         </motion.div>
 
         <div className="relative">
-          {/* Timeline center line */}
-          <div className="absolute left-1/2 transform -translate-x-0.5 top-0 bottom-0 w-1 bg-gradient-to-b from-cyan-500 to-purple-500 opacity-30"></div>
+          {/* Center Timeline Line */}
+          <div className="hidden md:block absolute left-1/2 transform -translate-x-0.5 top-0 bottom-0 w-1 bg-gradient-to-b from-cyan-500 to-purple-500 opacity-30" />
 
           <div className="space-y-12">
             {timelineEvents.map((event, index) => {
@@ -133,10 +140,11 @@ const Timeline = () => {
                   initial={{ opacity: 0, y: 50 }}
                   animate={inView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.8, delay: index * 0.1 }}
-                  className={`relative flex items-center ${index % 2 === 0 ? 'justify-start' : 'justify-end'}`}
+                  className={`relative flex flex-col md:flex-row md:items-center ${index % 2 === 0 ? 'md:justify-start' : 'md:justify-end'
+                    }`}
                 >
-                  {/* Timeline icon */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 z-10">
+                  {/* Timeline Dot */}
+                  <div className="absolute left-1/2 transform -translate-x-1/2 z-10 hidden md:block">
                     <motion.div
                       className={`w-12 h-12 ${colors.bg} rounded-full border-4 border-gray-900 flex items-center justify-center shadow-lg ${colors.shadow}`}
                       whileHover={{ scale: 1.2, rotate: 360 }}
@@ -146,26 +154,29 @@ const Timeline = () => {
                     </motion.div>
                   </div>
 
-                  {/* Timeline content */}
-                  <div className={`w-5/12 ${index % 2 === 0 ? 'pr-8' : 'pl-8'}`}>
+                  {/* Content Card */}
+                  <div
+                    className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:pr-8' : 'md:pl-8'
+                      }`}
+                  >
                     <GlassCard className="group">
                       <div className="flex items-center justify-between mb-3">
-                        <span className={`text-2xl font-bold font-cyber ${colors.text}`}>
+                        <span className={`text-xl md:text-2xl font-bold font-cyber ${colors.text}`}>
                           {event.year}
                         </span>
-                        <span className={`px-2 py-1 text-xs ${colors.badge} ${colors.text} rounded-full`}>
+                        <span
+                          className={`px-2 py-1 text-xs text-cyan-400 ${colors.badge} ${colors.text} rounded-full`}
+                        >
                           {event.type}
                         </span>
                       </div>
 
-                      <h3 className="text-xl font-bold text-white mb-1 group-hover:text-cyber-blue transition-colors duration-300">
+                      <h3 className="text-lg md:text-xl font-bold text-white mb-1 group-hover:text-cyber-blue transition-colors duration-300">
                         {event.title}
                       </h3>
-
-                      <h4 className={`${colors.text} font-semibold mb-3`}>
+                      <h4 className={`${colors.text} font-semibold mb-3 text-sm md:text-base`}>
                         {event.subtitle}
                       </h4>
-
                       <p className="text-gray-300 text-sm leading-relaxed">
                         {event.description}
                       </p>
@@ -177,15 +188,16 @@ const Timeline = () => {
           </div>
         </div>
 
+        {/* Footer message */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.8 }}
           className="text-center mt-16"
         >
-          <GlassCard className="inline-block">
-            <h3 className="text-xl font-bold text-white mb-4">Journey Continues...</h3>
-            <p className="text-gray-300">
+          <GlassCard className="inline-block px-6 py-4">
+            <h3 className="text-lg md:text-xl font-bold text-white mb-4">Journey Continues...</h3>
+            <p className="text-gray-300 text-sm md:text-base">
               Always learning, always growing, always building the future
             </p>
           </GlassCard>
