@@ -3,9 +3,12 @@
 
 @tailwind base;
 @tailwind components;
-@tailwind utilities;  
+@tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
 
-:root{
-  font-family: "inter", sans-serif;  
+:root {
+  font-family: "inter", sans-serif;
 }

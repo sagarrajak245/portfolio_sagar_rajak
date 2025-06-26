@@ -11,7 +11,7 @@ function Projects() {
         transition={{ duration: 1 }}
 
 
-        className='my-20 text-center text-4xl'>Projects</motion.h1>
+        className='my-20 text-center md:text-6xl font-semibold text-4xl'>Projects</motion.h1>
       <div>
         {PROJECTS.map((pro, index) => (
           <div key={index} className='mb-8 flex  flex-wrap lg:justify-center' >

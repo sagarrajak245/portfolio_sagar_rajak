@@ -1,57 +1,58 @@
-import { motion } from 'framer-motion'
-import { Achi } from '../constants/index'
+import { motion } from "framer-motion";
+import { ExternalLink } from "lucide-react";
+import { Achi } from "../constants";
+import GlareHover from "../ui/GlareCard";
+
 function Achievements() {
   return (
-    <div >
+    <section id="achievements" className="py-20 px-6">
+      {/* Heading */}
       <motion.h1
         whileInView={{ opacity: 1, y: 0 }}
         initial={{ opacity: 0, y: -100 }}
         transition={{ duration: 1 }}
+        className="mb-12 text-center md:text-6xl text-4xl font-semibold bg-gradient-to-r from-stone-100 to-purple-600 bg-clip-text text-transparent"
+      >
+        Achievements
+      </motion.h1>
 
-
-        className='my-20 text-center text-4xl '>Achievements</motion.h1>
-      <div>
+      {/* Achievement Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2   gap-x-2 gap-y-4   place-items-center">
         {Achi.map((ach, index) => (
-          <div key={index} className='mb-8  flex flex-wrap lg:justify-center'>
-            <div className='w-full lg:w-1/4'>
-              <motion.p
-
-                whileInView={{ opacity: 1, x: 0 }}
-                initial={{ opacity: 0, x: -100 }}
-                transition={{ duration: 1.5 }}
-
-                className='mb-2 text-sm text-neutral-400'>{ach.year}</motion.p>
-            </div>
-            <motion.div
-              whileInView={{ opacity: 1, x: 0 }}
-              initial={{ opacity: 0, x: 100 }}
-              transition={{ duration: 1.5 }}
-
-
-              className='w-full max-w-xl  lg:w-3/4'>
-              <h6 className='mb-4 font-semibold flex items-center justify-between'>
-                {ach.title}
+          <GlareHover
+            key={index}
+            width="100%"
+            height="auto"
+            glareColor="#ffffff"
+            glareOpacity={0.3}
+            glareAngle={-30}
+            glareSize={300}
+            transitionDuration={800}
+            playOnce={false}
+            className="w-full max-w-md p-6 rounded-xl"
+          >
+            <div className="text-left text-white space-y-3">
+              <p className="text-sm text-purple-400">{ach.year}</p>
+              <div className="flex items-start justify-between">
+                <h4 className="font-bold text-lg">{ach.title}</h4>
                 {ach.certificate && (
                   <a
                     href={ach.certificate}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="ml-4 inline-block rounded bg-purple-700 px-3 py-1 text-sm text-white hover:bg-purple-800 transition"
+                    className="text-cyan-400 hover:text-cyan-300"
                   >
-                    Certificate
+                    <ExternalLink size={16} />
                   </a>
                 )}
-              </h6>
-
-
-              <p className='mb-4 text-neutral-400'>{ach.description}</p>
-
-            </motion.div>
-          </div>
+              </div>
+              <p className="text-neutral-300 text-sm">{ach.description}</p>
+            </div>
+          </GlareHover>
         ))}
       </div>
-    </div>
-  )
+    </section>
+  );
 }
 
-export default Achievements
+export default Achievements;

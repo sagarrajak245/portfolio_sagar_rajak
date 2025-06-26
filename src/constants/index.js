@@ -175,34 +175,72 @@ export const CONTACT = {
   email: "sagarrajak245@gmail.com",
 };
 
-
-
 export const Achi = [
-
   {
-    title: " ATS Best Technical speaker",
-    year: "2022-2023",
-    certificate: "https://drive.google.com/file/d/1KnJcGgiWZh6FeI-YHohjEdvRZ6cmK80j/view?usp=sharing",
-
-    description: "I got ATS best technical speaker award. I proposed solution on optical specs and future of it also i talked about how to enhance its use with bionic eyes",
-
+    title: "NVIDIA: Fundamentals of Deep Learning",
+    year: "2023",
+    certificate: "https://drive.google.com/file/d/1b5GTJIk7YtOARbjzR70SVVo0MvIScKAa/view?usp=sharing",
+    description: "Completed NVIDIA’s foundational course on Deep Learning, covering neural networks, backpropagation, and training techniques."
   },
-
   {
-    title: " Dalal Street ",
-    year: "2022-2023",
-    certificate: "https://drive.google.com/file/d/1H8eG2mUQ4KQS8k0ov242UcIj3nw_fIOw/view?usp=sharing",
-
-    description: "It was fun event where you have to show your stock market skills.. learnt many things over there about market and got all basics covered ..our team was in top 15.. ",
-
+    title: "NVIDIA: Anomaly Detection",
+    year: "2023",
+    certificate: "https://drive.google.com/file/d/1Er0zjG9nt0QDCEUEhPjHAog3zXQSaAJT/view?usp=sharing",
+    description: "Learned anomaly detection techniques using deep learning frameworks for predictive maintenance and outlier detection."
   },
-
   {
-    title: "SIH-2024",
-    year: "2023-2024",
+    title: "MATLAB: Machine Learning",
+    year: "2023",
+    certificate: "https://drive.google.com/file/d/1IjJwyilrh12g_97X2fBR0moeGJqEKmso/view?usp=sharing",
+    description: "Completed MATLAB’s certification on core machine learning concepts including classification and regression models."
+  },
+  {
+    title: "MATLAB: Data Visualization",
+    year: "2023",
+    certificate: "https://drive.google.com/file/d/1bH-est_CXCEc_8z25bK4Dc0B2yVzwgZl/view?usp=sharing",
+    description: "Gained skills in effective data visualization techniques using MATLAB’s graphical libraries and data plotting features."
+  },
+  {
+    title: "AWS: Cloud Fundamentals",
+    year: "2023",
+    certificate: "https://drive.google.com/file/d/1iW5GLNuFDVheNOnObZRkLUdQArKstc5F/view?usp=sharing",
+    description: "Understood the foundational services and architecture of AWS Cloud including EC2, S3, Lambda, and IAM."
+  },
+  {
+    title: "Flutter Fundamentals - Udemy",
+    year: "2023",
+    certificate: "https://drive.google.com/file/d/1hmT7Vb8wz8oLoIyEipzlEXRrsu6vFI5l/view?usp=sharing",
+    description: "Completed a beginner-to-advanced course on Flutter, covering widgets, state management, and UI development."
+  },
+  {
+    title: "Web Development Complete Course - Udemy",
+    year: "2023",
+    certificate: "https://drive.google.com/file/d/1WmgxCjcDUYdxHOm-VkhfdnfyaJgDbgDL/view?usp=drive_link",
+    description: "Completed full-stack web development training with HTML, CSS, JavaScript, React, Node.js, and MongoDB."
+  },
+  {
+    title: "Smart India Hackathon 2024 Finalist",
+    year: "2023–2024",
     certificate: "https://drive.google.com/file/d/11joQAOfic0QfkFDkM0eqqHTxXo6_pwed/view?usp=sharing",
-    description: `Qualified for Smart India Hackathon 2024 under the Smart Education theme with Problem Statement ID: 1615. Our team, GURU-DEVS, developed a full-fledged LMS platform named "Drona" to streamline and enhance the learning and teaching experience. Drona focuses on centralized resource management, progress tracking with data visualizations, AI-powered content creation, and personalized learning path generation. It integrates APIs from Udemy, Coursera, and edX, along with GenAI tools like LangChain and Hugging Face, to dynamically generate content and roadmaps. The platform also includes features like an event planner, student analytics, and real-time recommendations—offering a holistic solution for modern educational needs.`
+    description: `Finalist at Smart India Hackathon 2024 under the Smart Education theme. Developed "Drona" — a full-fledged LMS platform with AI-powered content generation, roadmap creation, and analytics.`
+  },
+  {
+    title: "ATS Best Technical Speaker – Awakening the Scientist",
+    year: "2022–2023",
+    certificate: "https://drive.google.com/file/d/1KnJcGgiWZh6FeI-YHohjEdvRZ6cmK80j/view?usp=sharing",
+    description: "Received award for presenting innovative ideas on optical specs and enhancing vision using bionic eye technology."
+  },
+  {
+    title: "Dalal Street Finalist – Trade Game",
+    year: "2022–2023",
+    certificate: "https://drive.google.com/file/d/1H8eG2mUQ4KQS8k0ov242UcIj3nw_fIOw/view?usp=sharing",
+    description: "Secured a top-15 spot nationally in a stock market simulation competition demonstrating analytical and trading skills."
+  },
+  {
+    title: "MHT-CET State Rank – Top 5000",
+    year: "2021",
+    certificate: "",  // No link available in resume
+    description: "Achieved a top 5000 state-level rank among 300,000+ students in the MHT-CET entrance exam for engineering."
   }
-
-
 ];
+
