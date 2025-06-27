@@ -1,190 +1,136 @@
-import { motion } from 'framer-motion';
-
-import { FaFigma, FaGitAlt, FaHtml5, FaJava, FaLink, FaNode, FaPython } from 'react-icons/fa';
+/* eslint-disable react/jsx-no-undef */
+import {
+  FaChartBar,
+  FaFigma, FaGitAlt,
+  FaJava, FaJs,
+  FaLink,
+  FaNode, FaPython
+} from 'react-icons/fa';
 import { RiReactjsFill, RiTailwindCssFill } from "react-icons/ri";
-import { SiDocker, SiFirebase, SiFlutter, SiMongodb, SiMysql, SiNumpy, SiPandas, SiScikitlearn } from "react-icons/si";
+import {
+  SiDart,
+  SiDocker,
+  SiExpress,
+  SiFirebase,
+  SiFlask,
+  SiFlutter,
+  SiGithubactions,
+  SiJenkins,
+  SiLangchain,
+  SiLinux,
+  SiMongodb, SiMysql, SiNumpy, SiPandas,
+  SiPostgresql,
+  SiPytorch,
+  SiRedis,
+  SiRedux,
+  SiScikitlearn,
+  SiSpring,
+  SiSqlite,
+  SiTypescript
+} from "react-icons/si";
 import { TbBrandCpp } from "react-icons/tb";
+import llmicon from "../assets/LLm.jpg";
+import crewaiicon from "../assets/crewai.png";
+import Carousel from '../ui/Carousel';
 
-const iconVariants = (duration) => ({
-  hidden: {
-    y: -10,
-    opacity: 0
-  },
+export default function Technologies() {
 
-  animate: {
-    y: [10, -10],
-    transition: {
-      duration: duration,
-      ease: "linear",
-      repeat: Infinity,
-      repeatType: "reverse"
-    }
-  }
-})
+  const skillCategories = [
+    {
+      title: 'Languages & Libraries',
+      items: [
+        { icon: <TbBrandCpp className="text-blue-500" />, title: 'C/C++', description: 'Compiled languages' },
+        { icon: <FaPython className="text-yellow-300" />, title: 'Python', description: 'High-level scripting' },
+        { icon: <FaJava className="text-orange-500" />, title: 'Java', description: 'Enterprise-ready' },
+        { icon: <FaJs className="text-yellow-400" />, title: 'JavaScript', description: 'Dynamic web language' },
+        { icon: <SiTypescript className="text-blue-500" />, title: 'TypeScript', description: 'Typed superset of JS' },
+        { icon: <SiDart className="text-cyan-500" />, title: 'Dart', description: 'Flutter language' },
+        { icon: <SiMysql className="text-blue-400" />, title: 'SQL', description: 'Structured Query Language' },
+      ],
+    },
+    {
+      title: 'Frontend',
+      items: [
+        { icon: <RiReactjsFill className="text-cyan-500" />, title: 'React.js', description: 'UI Library' },
+        { icon: <SiRedux className="text-purple-500" />, title: 'Redux', description: 'State Management' },
+        { icon: <RiTailwindCssFill className="text-blue-700" />, title: 'Tailwind CSS', description: 'Utility-first CSS' },
+        { icon: <SiFirebase className="text-orange-500" />, title: 'Firebase', description: 'BAAS & hosting' },
+        { icon: <FaFigma className="text-pink-500" />, title: 'Figma', description: 'Design Tool' },
+        { icon: <span className="text-white">ShadCN</span>, title: 'ShadCN', description: 'UI Component Library' },
+        { icon: <span className="text-white">DaisyUI</span>, title: 'DaisyUI', description: 'Tailwind Components' },
+        { icon: <span className="text-white">Canva</span>, title: 'Canva', description: 'Graphic Design' },
+      ],
+    },
+    {
+      title: 'Backend & DevOps',
+      items: [
+        { icon: <FaNode className="text-green-400" />, title: 'Node.js', description: 'JavaScript Runtime' },
+        { icon: <SiExpress className="text-gray-300" />, title: 'Express.js', description: 'Node framework' },
+        { icon: <SiFlask className="text-gray-300" />, title: 'Flask', description: 'Python microframework' },
+        { icon: <SiSpring className="text-green-500" />, title: 'Spring Boot', description: 'Java backend framework' },
+        { icon: <SiDocker className="text-blue-500" />, title: 'Docker', description: 'Containerization' },
+        { icon: <SiRedis className="text-red-500" />, title: 'Redis', description: 'In-memory datastore' },
+        { icon: <SiJenkins className="text-red-400" />, title: 'Jenkins', description: 'CI/CD automation' },
+        { icon: <SiGithubactions className="text-white" />, title: 'GitHub Actions', description: 'Workflow automation' },
+      ],
+    },
+    {
+      title: 'Databases',
+      items: [
+        { icon: <SiMongodb className="text-green-600" />, title: 'MongoDB', description: 'NoSQL Database' },
+        { icon: <SiPostgresql className="text-blue-500" />, title: 'PostgreSQL', description: 'Advanced Relational DB' },
+        { icon: <SiMysql className="text-blue-400" />, title: 'MySQL', description: 'Relational Database' },
+        { icon: <SiSqlite className="text-gray-400" />, title: 'SQLite', description: 'Embedded SQL DB' },
+      ],
+    },
+    {
+      title: 'AI/ML',
+      items: [
+        { icon: <SiNumpy className="text-blue-500" />, title: 'Numpy', description: 'Numerical computing' },
+        { icon: <SiPandas className="text-green-500" />, title: 'Pandas', description: 'Data manipulation' },
+        { icon: <SiScikitlearn className="text-yellow-500" />, title: 'Scikit-learn', description: 'Machine Learning' },
+        { icon: <FaChartBar className="text-cyan-400" />, title: 'Seaborn', description: 'Statistical plots' },
+        { icon: <SiPytorch className="text-orange-500" />, title: 'PyTorch', description: 'Deep learning' },
 
-function Technologies() {
+        { icon: <img src={llmicon} alt="LLM" className="h-[28px] w-[28px] rounded-sm" />, title: 'LLMs', description: 'Large Language Models' },
+        { icon: <img src={crewaiicon} alt="CrewAI" className="h-[28px] w-[28px] rounded-sm" />, title: 'CrewAI', description: 'Agent Framework' },
+        { icon: <SiLangchain className="text-green-400" />, title: 'LangChain', description: 'RAG Framework' },
+      ],
+    },
+    {
+      title: 'Mobile & Others',
+      items: [
+        { icon: <SiFlutter className="text-cyan-500" />, title: 'Flutter', description: 'Mobile Framework' },
+        { icon: <span className="text-white">Provider</span>, title: 'Provider', description: 'Flutter State Mgmt' },
+        { icon: <FaLink className="text-orange-700" />, title: 'REST APIs', description: 'Web Services' },
+        { icon: <FaGitAlt className="text-orange-700" />, title: 'Git', description: 'Version Control' },
+        { icon: <SiLinux className="text-yellow-300" />, title: 'Linux', description: 'Operating System' },
+      ],
+    },
+  ];
+
   return (
-    <div className='border-b border-neutral-800 pb-25'>
-      <motion.h1
-        whileInView={{ opacity: 1, y: 0 }}
-        initial={{ opacity: 0, y: -100 }}
-        transition={{ duration: 1.5 }}
-        className='my-20 font-semibold  text-center text-4xl md:text-6xl  bg-gradient-to-r from-stone-100 to-stone-700 bg-clip-text text-transparent'>
-        Technologies
-      </motion.h1>
+    <section id="technologies" className="py-20 px-6  text-white">
+      <h2 className="text-center text-4xl md:text-6xl font-bold mb-16 bg-gradient-to-r from-white to-stone-700 bg-clip-text text-transparent">
+        Skills & Tech Stack
+      </h2>
 
-      <motion.div
-        whileInView={{ opacity: 1, x: 0 }}
-        initial={{ opacity: 0, x: -100 }}
-        transition={{ duration: 1, delay: 0.5 }}
-        className='flex flex-wrap items-center justify-center gap-4'>
-
-        <motion.div
-          variants={iconVariants(2.5)}
-          initial="initial"
-          animate="animate"
-          className='rounded-2xl border-4 border-neutral-800 p-4'>
-          <FaHtml5 className='text-7xl text-orange-700' />
-        </motion.div>
-
-        <motion.div
-          variants={iconVariants(2.5)}
-          initial="initial"
-          animate="animate"
-          className='rounded-2xl border-4 border-neutral-800 p-4'>
-          <RiTailwindCssFill className='text-7xl text-blue-700' />
-        </motion.div>
-
-        <motion.div
-          variants={iconVariants(2.5)}
-          initial="initial"
-          animate="animate"
-          className='rounded-2xl border-4 border-neutral-800 p-4'>
-          <RiReactjsFill className='text-7xl text-cyan-500' />
-        </motion.div>
-
-        <motion.div
-          variants={iconVariants(2.5)}
-          initial="initial"
-          animate="animate"
-          className='rounded-2xl border-4 border-neutral-800 p-4'>
-          <SiMongodb className='text-7xl text-green-600' />
-        </motion.div>
-
-        <motion.div
-          variants={iconVariants(2.5)}
-          initial="initial"
-          animate="animate"
-          className='rounded-2xl border-4 border-neutral-800 p-4'>
-          <FaNode className='text-7xl text-silver' />
-        </motion.div>
-
-        <motion.div
-          variants={iconVariants(2.5)}
-          initial="initial"
-          animate="animate"
-          className='rounded-2xl border-4 border-neutral-800 p-4'>
-          <SiMysql className='text-7xl text-blue-400' />
-        </motion.div>
-
-        <motion.div
-          variants={iconVariants(2.5)}
-          initial="initial"
-          animate="animate"
-          className='rounded-2xl border-4 border-neutral-800 p-4'>
-          <SiFirebase className='text-7xl text-orange-500' />
-        </motion.div>
-
-        <motion.div
-          variants={iconVariants(2.5)}
-          initial="initial"
-          animate="animate"
-          className='rounded-2xl border-4 border-neutral-800 p-4'>
-          <SiFlutter className='text-7xl text-cyan-500' />
-        </motion.div>
-
-        <motion.div
-          variants={iconVariants(2.5)}
-          initial="initial"
-          animate="animate"
-          className='rounded-2xl border-4 border-neutral-800 p-4'>
-          <FaFigma className='bg-gradient-to-r from-red-500 to-blue-500 text-7xl mt-1 mb-1 p-1' />
-        </motion.div>
-
-        <motion.div
-          variants={iconVariants(2.5)}
-          initial="initial"
-          animate="animate"
-          className='rounded-2xl border-4 border-neutral-800 p-4'>
-          <TbBrandCpp className='text-7xl text-white-500' />
-        </motion.div>
-
-        <motion.div
-          variants={iconVariants(2.5)}
-          initial="initial"
-          animate="animate"
-          className='rounded-2xl border-4 border-neutral-800 p-4'>
-          <FaPython className='text-7xl text-yellow-300' />
-        </motion.div>
-
-        <motion.div
-          variants={iconVariants(2.5)}
-          initial="initial"
-          animate="animate"
-          className='rounded-2xl border-4 border-neutral-800 p-4'>
-          <FaJava className='text-7xl text-orange-500' />
-        </motion.div>
-
-        <motion.div
-          variants={iconVariants(2.5)}
-          initial="initial"
-          animate="animate"
-          className='rounded-2xl border-4 border-neutral-800 p-4'>
-          <FaGitAlt className='text-7xl text-orange-700' />
-        </motion.div>
-
-        <motion.div
-          variants={iconVariants(2.5)}
-          initial="initial"
-          animate="animate"
-          className='rounded-2xl border-4 border-neutral-800 p-4'>
-          <FaLink className='text-7xl text-orange-700' />
-        </motion.div>
-
-        <motion.div
-          variants={iconVariants(2.5)}
-          initial="initial"
-          animate="animate"
-          className='rounded-2xl border-4 border-neutral-800 p-4'>
-          <SiNumpy className='text-7xl text-blue-500' />
-        </motion.div>
-
-        <motion.div
-          variants={iconVariants(2.5)}
-          initial="initial"
-          animate="animate"
-          className='rounded-2xl border-4 border-neutral-800 p-4'>
-          <SiPandas className='text-7xl text-green-500' />
-        </motion.div>
-
-        <motion.div
-          variants={iconVariants(2.5)}
-          initial="initial"
-          animate="animate"
-          className='rounded-2xl border-4 border-neutral-800 p-4'>
-          <SiScikitlearn className='text-7xl text-yellow-500' />
-        </motion.div>
-        <motion.div
-          variants={iconVariants(2.5)}
-          initial="initial"
-          animate="animate"
-          className='rounded-2xl border-4 border-neutral-800 p-4'>
-          <SiDocker className='text-7xl text-blue-500' />
-        </motion.div>
-
-      </motion.div>
-    </div>
-  )
+      <div className="max-w-6xl mx-auto flex flex-col gap-24">
+        {skillCategories.map((category, index) => (
+          <div key={index} className="flex flex-col items-center">
+            <h3 className="text-2xl md:text-3xl font-semibold mb-8 text-stone-400">
+              {category.title}
+            </h3>
+            <Carousel
+              items={category.items}
+              baseWidth={320}
+              autoplay
+              autoplayDelay={3000}
+              loop
+            />
+          </div>
+        ))}
+      </div>
+    </section>
+  );
 }
-
-export default Technologies

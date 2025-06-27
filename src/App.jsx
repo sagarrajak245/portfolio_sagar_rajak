@@ -21,7 +21,7 @@ function App() {
       <Navigation />
 
       {/* Scrollable content */}
-      <div className="container mx-auto px-8">
+      <div className="container mx-auto px-8 z-10">
         <section id="hero">
           <Hero />
         </section>

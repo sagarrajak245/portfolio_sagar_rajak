@@ -47,16 +47,16 @@ const Resume = () => {
 
               <div className="grid md:grid-cols-2 gap-4 text-sm text-gray-400 mb-8">
                 <div>
-                  <strong className="text-cyber-blue">Experience:</strong> 2+ years
+                  <strong className="text-cyan-400">Experience:</strong> 2+ years
                 </div>
                 <div>
-                  <strong className="text-cyber-purple">Education:</strong> B.E. AI & DS
+                  <strong className="text-stone-400">Education:</strong> B.E. AI & DS
                 </div>
                 <div>
-                  <strong className="text-cyber-pink">Projects:</strong> 20+ completed
+                  <strong className="text-stone-400">Projects:</strong> 10+ completed
                 </div>
                 <div>
-                  <strong className="text-cyber-green">CGPA:</strong> 9.2/10
+                  <strong className="text-stone-400">CGPA:</strong> 9.2/10
                 </div>
               </div>
             </div>

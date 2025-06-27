@@ -13,7 +13,8 @@ function Achievements() {
         transition={{ duration: 1 }}
         className="mb-12 text-center md:text-6xl text-4xl font-semibold bg-gradient-to-r from-stone-100 to-stone-700 bg-clip-text text-transparent"
       >
-        Achievements
+        Achievements and Certifications
+
       </motion.h1>
 
       {/* Achievement Cards */}

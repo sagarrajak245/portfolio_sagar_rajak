@@ -17,157 +17,151 @@ I've conducted ML workshops, mentored peers, and delivered practical projects—
 I'm always excited to take on new challenges, collaborate with forward-thinking teams, and contribute to innovative tech solutions that make an impact.`;
 
 export const EXPERIENCES = [
-
   {
     year: "4 Nov(2024) - 4 Feb(2025)",
     role: "Backend Developer",
     company: "Kinzy club pvt Ltd",
-    description: `• Built secure JWT-based authentication with interceptors and route protection for high user traffic.
-• Enhanced PostgreSQL performance by resolving full scans, adding indexes, and optimizing queries.
-• Implemented Redis-backed scalable feed system using partial active indexing to lower DB load.
-• Dockerized microservices and scheduled distributed tasks with node locking to avoid conflicts
-• Developed node scheduler for server in distributed system wrote unit test .`,
+    description: [
+      "Built secure JWT-based authentication with interceptors and route protection for high user traffic.",
+      "Enhanced PostgreSQL performance by resolving full scans, adding indexes, and optimizing queries.",
+      "Implemented Redis-backed scalable feed system using partial active indexing to lower DB load.",
+      "Dockerized microservices and scheduled distributed tasks with node locking to avoid conflicts.",
+      "Developed node scheduler for server in distributed system and wrote unit tests."
+    ],
     technologies: ["Spring Boot", "Maven", "Docker", "Redis", "JOOQ", "PostgreSQL", "Spring-Scheduler"],
     certificate: ""
   },
-
   {
     year: "Aug 2023 - Present",
     role: "SR.Technical officer",
     company: "AI Colegion",
-    description: `•Served as a technical officer, collaborating with members on MERN stack projects.
-• Conducted a Flutter workshop for 180+ students, contributing as an instructor.
-• Led a Machine Learning workshop for 100+ students, teaching foundational ML concepts`,
-    technologies: ["Javascript", "React.js", "figma", "mongoDB", "Multi agent AI system", "flutter"],
+    description: [
+      "Served as a technical officer, collaborating with members on MERN stack projects.",
+      "Conducted a Flutter workshop for 180+ students, contributing as an instructor.",
+      "Led a Machine Learning workshop for 100+ students, teaching foundational ML concepts."
+    ],
+    technologies: ["Javascript", "React.js", "Figma", "MongoDB", "Multi agent AI system", "Flutter"]
   },
   {
-    year: " July 2023- July 2024",
+    year: "July 2023 - July 2024",
     role: "JR.Technical officer",
     company: "CSI VESIT",
-    description: `• Collaborated with the team to manage an AI-powered CSI app.
-
-• Conducted a workshop on OpenCV for ~180 students; served as a Teaching Assistant.
-
-• Led and conducted workshops on MERN Stack Development.
-
-• Organized technical events such as Hidden Cypher, Sherlock, and Watson.`,
-    technologies: ["HTML", "CSS", "Express.js", "mongoDB", "open cv "],
+    description: [
+      "Collaborated with the team to manage an AI-powered CSI app.",
+      "Conducted a workshop on OpenCV for ~180 students; served as a Teaching Assistant.",
+      "Led and conducted workshops on MERN Stack Development.",
+      "Organized technical events such as Hidden Cypher, Sherlock, and Watson."
+    ],
+    technologies: ["HTML", "CSS", "Express.js", "MongoDB", "OpenCV"]
   },
   {
     year: "May 2024 - Aug 2024",
     role: "Opensource Contributor",
     company: "Girl Script Summer of code",
-    description: `contributed to open source projects and developed web applications using JavaScript, React.js, and Node.js. Designed and implemented RESTful APIs for data communication. Collaborated with cross-functional teams to define project requirements and timelines.`,
-    technologies: ["reactjs", "mongoDB", "Html", "Tailwind css"],
-  },
-
+    description: [
+      "Contributed to open source projects and developed web applications using JavaScript, React.js, and Node.js.",
+      "Designed and implemented RESTful APIs for data communication.",
+      "Collaborated with cross-functional teams to define project requirements and timelines."
+    ],
+    technologies: ["React.js", "MongoDB", "HTML", "Tailwind CSS"]
+  }
 ];
+
 
 export const PROJECTS = [
   {
     title: "Twitter clone web app",
     image: pro1,
     github: "https://github.com/sagarrajak245/fullstackproject-Twitterclone",
-    description:
-      `• Developed a full-stack web application clone of twitter Created UI using Reactjs frame work.
-• Created login/signup page added authentication and authorization using jwt token, added the create post like post
-add follower and your personal profile and many other features used mongoDB to collect user data
-• Used react query for endpoint connections and api calling,Set up the server and routing using express js and nodejs`,
-    technologies: ["HTML", "CSS", "React-js", "Node.js", "MongoDB", "Express.js", "Tailwind css", "react-query"],
+    description: [
+      "Developed a full-stack Twitter clone with React.js for UI.",
+      "Implemented login/signup with JWT-based authentication.",
+      "Features include creating posts, liking posts, following users, personal profiles.",
+      "Used MongoDB for user data storage.",
+      "Set up API endpoints using Express.js and Node.js.",
+      "Used React Query for API calls and caching."
+    ],
+    technologies: ["HTML", "CSS", "React-js", "Node.js", "MongoDB", "Express.js", "Tailwind CSS", "React Query"],
   },
   {
-    title: "Expense tracker App",
+    title: "Expense Tracker App",
     image: pro2,
     github: "https://github.com/sagarrajak245/flutter_projects/tree/master",
-    description:
-      "An application for keeping the record of expenses , with features such as monthly spent, total income, graphical representation of expenses and progress tracking.",
-    technologies: ["Dart", "flutter", "provider"],
+    description: [
+      "Mobile app to track daily expenses.",
+      "Shows monthly spending, total income, and progress tracking.",
+      "Includes graphical charts of expenses."
+    ],
+    technologies: ["Dart", "Flutter", "Provider"],
   },
-
   {
-    title: "Brain wave AI ui project ",
+    title: "Brainwave AI UI Project",
     image: pro4,
     github: "https://github.com/sagarrajak245/reactjs_uiproject_brainwave",
-    description:
-      "A frontend project using react js ,tailwind  css. developed attractive ui and applied some cool feature fully futuristic look",
-    technologies: ["HTML", "CSS", "React-js", "Tailwind css"],
+    description: [
+      "Frontend UI project built with React.js and Tailwind CSS.",
+      "Designed a futuristic look with responsive design.",
+      "Implemented smooth animations and interactions."
+    ],
+    technologies: ["HTML", "CSS", "React-js", "Tailwind CSS"],
   },
-
-
   {
     title: "Portfolio Website",
     image: pro6,
     github: "https://github.com/sagarrajak245/portfolio_1",
-    description:
-      "A personal portfolio website showcasing projects, skills, and contact information.",
-    technologies: ["HTML", "CSS", "React", "Tailwind css", "daisy-ui"],
+    description: [
+      "Personal portfolio website.",
+      "Showcases projects, skills, and contact information.",
+      "Built with React and Tailwind CSS with Daisy UI components."
+    ],
+    technologies: ["HTML", "CSS", "React", "Tailwind CSS", "Daisy UI"],
   },
-
   {
-    title: "Gdp Analysis (1960 to 2024)",
+    title: "GDP Analysis (1960 to 2024)",
     image: pro5,
     github: "https://github.com/sagarrajak245/ML-project-_4_steps",
-    description:
-      `•Analyzed and visualized GDP per capita trends of 180+ countries from 1960 to 2022; highlighted global economic
-disparities in 2022 using bar charts.
-• Predicted 2023 GDP per capita using Linear Regression and Random Forest; evaluated using MAE, RMSE, and R2
-Score.
-• Clustered countries based on predicted 2023 GDP using K-Means; visualized economic groupings via PCA;
-optimized with Silhouette Score.
-• Conducted leadership-based GDP trend analysis for India; calculated CAGR for each Prime Minister and modeled
-future growth using Logistic Regression.
-• Created timeline visualization mapping India’s GDP growth under various political regimes; evaluated predictive
-model with accuracy and confusion matrix`,
-    technologies: ["numpy", "pandas", "matplotlib", "seaborn", "scikit-learn", "statsmodels"],
+    description: [
+      "Analyzed GDP per capita trends for 180+ countries (1960–2022).",
+      "Predicted 2023 GDP using Linear Regression and Random Forest.",
+      "Evaluated models with MAE, RMSE, and R² score.",
+      "Clustered countries using K-Means and visualized with PCA.",
+      "Conducted GDP trend analysis for India by Prime Ministers.",
+      "Created timeline visualizations of India's GDP growth."
+    ],
+    technologies: ["NumPy", "Pandas", "Matplotlib", "Seaborn", "Scikit-learn", "Statsmodels"],
   },
   {
-    title: "Crew Ai multiagent system",
+    title: "Crew AI Multi-Agent System",
     image: pro7,
     github: "https://github.com/sagarrajak245/crewai_project",
-    description:
-      `• Developed Multi-agents system using crew ai library, agent where acting as researcher ,writer and editor.
-• Created research,writing,editing automated system using LLM models and Crewai library`,
-    technologies: ["openai", "claude", "crew ai framework", "python", "jupyter notebook", "scraping-tools"],
+    description: [
+      "Developed a multi-agent system using the CrewAI library.",
+      "Agents act as researcher, writer, and editor.",
+      "Automated research, writing, and editing using LLM models."
+    ],
+    technologies: ["OpenAI", "Claude", "CrewAI Framework", "Python", "Jupyter Notebook", "Scraping Tools"],
   },
   {
-    title: " Air Quality Index (AQI) Prediction System ",
+    title: "Air Quality Index (AQI) Prediction System",
     image: pro8,
     github: "https://github.com/sagarrajak245/AQI_Predictor/tree/main",
-    description:
-      `🔍 End-to-end ML-powered web application for real-time AQI prediction.
-
-🧠 R used for training an XGBoost regression model on historical pollutant data.
-
-🔗 Flask serves as a backend API that interfaces with the R model via subprocess.
-
-💻 Streamlit frontend provides an interactive UI for user inputs and result display.
-
-📊 Real-time prediction of AQI based on input levels of PM2.5, PM10, NO2, and more.
-
-🌍 Cross-language integration between Python and R ensures modular design.
-
-📈 Visualizations using Plotly to show historical AQI trends and predicted values.
-
-🚀 Designed with a clean architecture, making it easy to deploy and scale.`,
-    technologies: ["R",
-      "XGBoost",
-      "Caret",
-      "jsonlite",
-      "Python",
-      "Flask",
-      "Streamlit",
-      "Plotly",
-      "REST API",
-      "Subprocess (Python ↔ R)",
-      "Pandas",
-      "NumPy",
-      "Scikit-learn",
-      "HTML/CSS",
-      "Git",
-      "GitHub"],
+    description: [
+      "End-to-end ML-powered web app for real-time AQI prediction.",
+      "XGBoost regression model trained in R on historical data.",
+      "Flask API connects Python with R subprocess.",
+      "Streamlit frontend for interactive user input and results.",
+      "Real-time prediction of AQI based on pollutant levels.",
+      "Integrated Plotly for historical and predicted AQI visualizations.",
+      "Designed modular architecture for easy deployment."
+    ],
+    technologies: [
+      "R", "XGBoost", "Caret", "JSONLite", "Python", "Flask",
+      "Streamlit", "Plotly", "REST API", "Subprocess", "Pandas",
+      "NumPy", "Scikit-learn", "HTML/CSS", "Git", "GitHub"
+    ],
   },
-
 ];
+
 
 export const CONTACT = {
   Address: "New mumbai, Maharashtra, India.",

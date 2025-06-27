@@ -57,7 +57,7 @@ const Navigation = () => {
                             whileHover={{ scale: 1.05 }}
                             className="text-2xl font-bold text-cyan-400 bg-clip-text  font-cyber"
                         >
-                            SR
+                            Sagar rajak
                         </motion.div>
 
                         {/* Desktop Navigation */}
@@ -67,7 +67,7 @@ const Navigation = () => {
                                     key={item.id}
                                     onClick={() => scrollToSection(item.id)}
                                     className={`relative px-3 py-2 text-sm font-medium transition-colors duration-300 ${activeSection === item.id
-                                        ? 'text-cyber-blue'
+                                        ? 'text-white'
                                         : 'text-gray-300 hover:text-white'
                                         }`}
                                     whileHover={{ scale: 1.05 }}
@@ -89,7 +89,7 @@ const Navigation = () => {
                         {/* Mobile Menu Button */}
                         <motion.button
                             onClick={() => setIsOpen(!isOpen)}
-                            className="md:hidden p-2 text-white"
+                            className="md:hidden p-2 text-white "
                             whileTap={{ scale: 0.95 }}
                         >
                             {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -111,7 +111,7 @@ const Navigation = () => {
                                         onClick={() => scrollToSection(item.id)}
                                         className={`text-left px-3 py-2 text-sm font-medium transition-colors duration-300 rounded-lg ${activeSection === item.id
                                             ? 'text-cyber-blue bg-cyber-blue/20'
-                                            : 'text-gray-300 hover:text-white hover:bg-white/10'
+                                            : 'text-gray-300 hover:text-white hover:bg-purple-800/40'
                                             }`}
                                         whileTap={{ scale: 0.95 }}
                                     >

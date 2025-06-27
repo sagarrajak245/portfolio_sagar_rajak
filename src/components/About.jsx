@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import aboutme from '../assets/about.jpg';
 import { ABOUT_TEXT } from '../constants/index';
-import ShinyText from '../ui/ShinyText'; // ✅ Latest hover-based version
 
 function About() {
   return (
@@ -27,15 +26,15 @@ function About() {
           </div>
         </motion.div>
 
-        {/* Right: ShinyText (hover activated) */}
+        {/* Right: Plain ABOUT_TEXT */}
         <motion.div
           whileInView={{ opacity: 1, x: 0 }}
           initial={{ opacity: 0, x: 100 }}
           transition={{ duration: 0.5 }}
           className="w-full lg:w-1/2 flex justify-center lg:justify-start px-6"
         >
-          <div className="my-4 max-w-xl py-6 font-thin tracking-tighter text-base md:text-lg leading-relaxed text-left hover:animate-shine">
-            <ShinyText text={ABOUT_TEXT} disabled={true} />
+          <div className="my-4 max-w-xl py-6 font-light tracking-tighter text-base md:text-lg leading-relaxed text-left">
+            {ABOUT_TEXT}
           </div>
         </motion.div>
       </div>
