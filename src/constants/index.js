@@ -3,7 +3,7 @@ import pro7 from "../assets/projects/crew_ai.png";
 import dashboard from "../assets/projects/dashboard.png";
 import fraud from "../assets/projects/fraud.png";
 import pro5 from "../assets/projects/gdp.png";
-import Postify from "../assets/projects/postify.png ";
+import Postify from "../assets/projects/postify.png";
 import pro1 from "../assets/projects/pro1.png";
 import pro2 from "../assets/projects/pro2.png";
 import pro4 from "../assets/projects/pro4.jpg";
