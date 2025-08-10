@@ -64,7 +64,7 @@ const Resume = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               {/* Download Button */}
               <motion.a
-                href="https://drive.google.com/uc?export=download&id=1eQGtiwthkigWOudRfsdSnGWErzLIU4ge"
+                href="https://drive.google.com/uc?export=download&id=1cTW7GOMl04_VpPCY2WK0JNT_ius9Q2C5"
                 className="px-8 py-4 bg-black-900 border-2 border-violet-200 text-cyan-500 font-semibold rounded-full hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-3"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -72,10 +72,9 @@ const Resume = () => {
                 <Download size={20} />
                 Download Resume
               </motion.a>
-
               {/* Preview Button */}
               <motion.a
-                href="https://drive.google.com/file/d/1eQGtiwthkigWOudRfsdSnGWErzLIU4ge/view"
+                href="https://drive.google.com/file/d/1cTW7GOMl04_VpPCY2WK0JNT_ius9Q2C5/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-8 py-4 border-2 border-violet-200 text-purple-600 font-semibold rounded-full hover:bg-purple-500 hover:text-white

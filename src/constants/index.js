@@ -1,10 +1,16 @@
 import pro8 from "../assets/projects/aqi.png";
 import pro7 from "../assets/projects/crew_ai.png";
+import dashboard from "../assets/projects/dashboard.png";
+import fraud from "../assets/projects/fraud.png";
 import pro5 from "../assets/projects/gdp.png";
+import Postify from "../assets/projects/postify.png ";
 import pro1 from "../assets/projects/pro1.png";
 import pro2 from "../assets/projects/pro2.png";
 import pro4 from "../assets/projects/pro4.jpg";
 import pro6 from "../assets/projects/pro6.jpg";
+import yolo from "../assets/projects/yolo.png";
+
+
 
 export const HERO_CONTENT = `I'm a passionate Full-Stack Developer with expertise in building scalable webapps. I also explore Machine Learning and AI agents to craft intelligent, data-driven solutions. I thrive on turning ideas into impactful digital experiences`;
 
@@ -160,6 +166,54 @@ export const PROJECTS = [
       "NumPy", "Scikit-learn", "HTML/CSS", "Git", "GitHub"
     ],
   },
+  {
+    title: "Postify – AI-Powered Chrome Extension",
+    image: Postify, // Add relevant image import if available
+    github: "https://github.com/sagarrajak245/postify_chrome_extension",
+    description: [
+      "Developed a productivity-focused Chrome Extension that automates certificate scanning from Gmail.",
+      "Parsed course metadata and generated LinkedIn/Twitter posts using GPT-4, Grok, and Gemini.",
+      "Integrated Gmail, LinkedIn, and Twitter APIs for a complete certificate-to-social pipeline."
+    ],
+    technologies: ["React", "TypeScript", "Tailwind CSS", "GPT-4", "Grok", "Gemini", "Gmail API"],
+  },
+  {
+    title: "Player Tracking & Re-identification System",
+    image: yolo, // Add relevant image import if available
+    github: "https://github.com/sagarrajak245/computer_vision_project",
+    description: [
+      "Built a sports analytics system to track players in real-time from videos.",
+      "Ensured consistent IDs even after players exited and re-entered the frame.",
+      "Implemented ByteTrack, DeepSORT, and StrongSORT with OSNet embeddings."
+    ],
+    technologies: ["YOLOv8", "ByteTrack", "DeepSORT", "StrongSORT", "OSNet", "Python", "OpenCV"],
+  },
+  {
+    title: "Financial Fraud Detection in Transactions",
+    image: fraud, // Add relevant image import if available
+    github: "https://github.com/sagarrajak245/Fraud_transaction_detection_in_payment_app",
+    description: [
+      "Developed a real-time fraud detection system on 6.3M+ transactions with extreme class imbalance.",
+      "Used SMOTE for balancing and XGBoost/Random Forest for classification.",
+      "Achieved AUPRC of 0.9979 with zero false positives/negatives."
+    ],
+    technologies: ["Python", "XGBoost", "SMOTE", "SHAP", "Scikit-learn", "Pandas", "NumPy"],
+  },
+  {
+    title: "ADmyBRAND Insights Dashboard",
+    image: dashboard, // Add relevant image import if available
+    github: "https://github.com/yourusername/admybrand-insights",
+    description: [
+      "A modern, real-time analytics dashboard for digital marketing agencies with advanced data visualization and responsive design.",
+      "Features include interactive charts (line, bar, pie, scatter), campaign analytics, real-time metrics, AI bot assistant, export to PDF/CSV/JSON, and profile management.",
+      "Built with Vite, TypeScript, React, Tailwind CSS (shadcn/ui), Recharts, and Framer Motion, implementing glassmorphism UI and light/dark mode."
+    ],
+    technologies: [
+      "React", "TypeScript", "Vite", "Tailwind CSS", "shadcn/ui", "Recharts",
+      "Framer Motion", "Lucide React", "jsPDF", "Papa Parse"
+    ],
+  },
+
 ];
 
 
@@ -236,5 +290,6 @@ export const Achi = [
     certificate: "",  // No link available in resume
     description: "Achieved a top 5000 state-level rank among 300,000+ students in the MHT-CET entrance exam for engineering."
   }
+
 ];
 
