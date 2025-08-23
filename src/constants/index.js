@@ -8,6 +8,7 @@ import pro1 from "../assets/projects/pro1.png";
 import pro2 from "../assets/projects/pro2.png";
 import pro4 from "../assets/projects/pro4.jpg";
 import pro6 from "../assets/projects/pro6.jpg";
+import webrtc from "../assets/projects/webrtc.png";
 import yolo from "../assets/projects/yolo.png";
 
 
@@ -213,6 +214,24 @@ export const PROJECTS = [
       "Framer Motion", "Lucide React", "jsPDF", "Papa Parse"
     ],
   },
+  {
+    title: "WebRTC Real-time Object Detection System through Mobile Phones",
+    image: webrtc, // Add relevant image import if available
+    github: "https://github.com/sagarrajak245/Real-time-WebRTC-VLM-Multi-Object-Detection",
+    description: [
+      "Production-ready system for real-time multi-object detection on live video streams from mobile phones via WebRTC.",
+      "Supports dual-mode inference: client-side WASM with YOLOv5n or server-side processing with YOLOv8n.",
+      "Implements smart frame queue management with backpressure handling for smooth streaming.",
+      "Automatic ngrok tunneling with QR code generation for easy phone-to-browser connection.",
+      "Comprehensive metrics dashboard with FPS, latency, network bandwidth, and detection statistics.",
+      "Includes one-command Docker/Node.js setup and benchmark suite for performance evaluation."
+    ],
+    technologies: [
+      "WebRTC", "YOLOv5n", "YOLOv8n", "ONNX Runtime", "WASM", "Node.js",
+      "Express.js", "Docker", "ngrok", "JavaScript", "HTML", "CSS"
+    ]
+  }
+
 
 ];
 
