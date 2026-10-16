@@ -1,185 +1,85 @@
-import { motion } from 'framer-motion';
-import {
-  Check,
-  Copy,
-  Mail,
-  MapPin,
-  Phone
-} from 'lucide-react';
-import { useState } from 'react';
-import {
-  FaGithub,
-  FaInstagram,
-  FaLinkedin
-} from 'react-icons/fa';
-import { IoNewspaperOutline } from 'react-icons/io5';
-import { RiTwitterXLine } from 'react-icons/ri';
-import { SiLeetcode } from 'react-icons/si';
+import { Check, Copy, FileText, Mail } from "lucide-react";
+import { useState } from "react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { RiTwitterXLine } from "react-icons/ri";
+import { SiLeetcode } from "react-icons/si";
+import { CONTACT, RESUME_URL, SOCIALS } from "../constants";
 
-import { CONTACT } from '../constants';
-import GlassIcons from '../ui/GlassIcons';
-
-const socialItems = [
-  {
-    icon: <FaLinkedin className="text-white text-xl" />,
-    color: 'blue',
-    label: 'LinkedIn',
-    url: 'https://www.linkedin.com/in/sagar-rajak-4b970b290/'
-  },
-  {
-    icon: <FaGithub className="text-white text-xl" />,
-    color: 'indigo',
-    label: 'GitHub',
-    url: 'https://github.com/sagarrajak245'
-  },
-  {
-    icon: <RiTwitterXLine className="text-white text-xl" />,
-    color: 'cyan',
-    label: 'Twitter',
-    url: 'https://twitter.com/Sagar00043'
-  },
-  {
-    icon: <FaInstagram className="text-white text-xl" />,
-    color: 'pink',
-    label: 'Instagram',
-    url: 'https://www.instagram.com/sagarrajak003'
-  },
-  {
-    icon: <SiLeetcode className="text-white text-xl" />,
-    color: 'orange',
-    label: 'LeetCode',
-    url: 'https://leetcode.com/u/sagarrajak245/'
-  },
-  {
-    icon: <IoNewspaperOutline className="text-white text-xl" />,
-    color: 'purple',
-    label: 'Resume',
-    url: 'https://drive.google.com/file/d/1eQGtiwthkigWOudRfsdSnGWErzLIU4ge/view?usp=sharing'
-  }
+const LINKS = [
+  { label: "LinkedIn", url: SOCIALS.linkedin, Icon: FaLinkedin },
+  { label: "GitHub", url: SOCIALS.github, Icon: FaGithub },
+  { label: "LeetCode", url: SOCIALS.leetcode, Icon: SiLeetcode },
+  { label: "X", url: SOCIALS.x, Icon: RiTwitterXLine },
 ];
 
 function Contact() {
-  const [emailCopied, setEmailCopied] = useState(false);
+  const [copied, setCopied] = useState(false);
 
-  const handleEmailCopy = () => {
-    navigator.clipboard.writeText(CONTACT.email);
-    setEmailCopied(true);
-    setTimeout(() => setEmailCopied(false), 2000);
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(CONTACT.email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      window.location.href = `mailto:${CONTACT.email}`;
+    }
   };
 
   return (
-    <div id="contact" className="border-b border-neutral-200 pb-20 px-6">
-      {/* Heading */}
-      <motion.h1
-        whileInView={{ opacity: 1, y: 0 }}
-        initial={{ opacity: 0, y: -100 }}
-        transition={{ duration: 1 }}
-        className="my-10 text-center font-semibold md:text-6xl text-4xl bg-gradient-to-r bg-clip-text text-transparent from-stone-50 to-stone-700 "
-      >
-        Get in Touch...
-      </motion.h1>
+    <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <div className="relative overflow-hidden rounded-3xl border border-line bg-surface px-6 py-16 sm:px-12 md:py-24">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -bottom-40 left-1/2 h-80 w-[36rem] -translate-x-1/2 rounded-full bg-signal/10 blur-3xl"
+        />
+        <div className="relative max-w-2xl">
+          <h2 className="text-4xl font-semibold tracking-tight text-white md:text-6xl">
+            Building something with agents?
+          </h2>
+          <p className="mt-5 text-lg leading-relaxed text-text/80">
+            I&apos;m happy to talk about agentic systems, backend architecture or roles where I can do both. Email is
+            the fastest way to reach me.
+          </p>
 
-      {/* Contact Info */}
-      <div className="text-center font-thin tracking-tighter space-y-8">
-        <motion.div
-          whileInView={{ opacity: 1, x: 0 }}
-          initial={{ opacity: 0, x: -100 }}
-          transition={{ duration: 1 }}
-          className="flex items-center justify-center gap-3 text-silver"
-        >
-          <MapPin size={20} className="text-cyber-blue" />
-          <p>{CONTACT.Address}</p>
-        </motion.div>
+          <div className="mt-10 flex flex-wrap items-center gap-3">
+            <a href={`mailto:${CONTACT.email}`} className="btn-primary px-6 py-3 text-base">
+              <Mail size={18} aria-hidden="true" />
+              Email me
+            </a>
+            <button type="button" onClick={copyEmail} className="btn-ghost px-5 py-3">
+              {copied ? <Check size={16} className="text-signal" aria-hidden="true" /> : <Copy size={16} aria-hidden="true" />}
+              <span aria-live="polite">{copied ? "Copied" : CONTACT.email}</span>
+            </button>
+            <a href={RESUME_URL} target="_blank" rel="noopener noreferrer" className="btn-ghost px-5 py-3">
+              <FileText size={16} aria-hidden="true" />
+              Resume
+            </a>
+          </div>
 
-        <motion.div
-          whileInView={{ opacity: 1, x: 0 }}
-          initial={{ opacity: 0, x: 100 }}
-          transition={{ duration: 1 }}
-          className="flex items-center justify-center gap-3 text-silver"
-        >
-          <Phone size={20} className="text-cyber-purple" />
-          <p>Mobile no: {CONTACT.phoneNo}</p>
-        </motion.div>
-
-        <motion.div
-          whileInView={{ opacity: 1, x: 0 }}
-          initial={{ opacity: 0, x: -100 }}
-          transition={{ duration: 1 }}
-          className="flex items-center justify-center gap-3 text-silver cursor-pointer hover:text-cyber-green transition-colors duration-300"
-          onClick={handleEmailCopy}
-        >
-          <Mail size={20} className="text-cyber-pink" />
-          <span>{CONTACT.email}</span>
-          {emailCopied ? (
-            <Check size={18} className="text-cyber-green" />
-          ) : (
-            <Copy size={18} className="text-gray-400" />
-          )}
-        </motion.div>
-
-        {/* Glass Icons */}
-        <div className="flex justify-between my-20">
-          <GlassIcons items={socialItems} />
+          <ul className="mt-10 flex flex-wrap gap-2">
+            {LINKS.map(({ label, url, Icon }) => (
+              <li key={label}>
+                <a
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 rounded-full px-3 py-2 text-sm text-muted transition-colors hover:text-white"
+                >
+                  <Icon size={16} aria-hidden="true" />
+                  {label}
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
 
-      {/* Contact Form */}
-      <div className="max-w-3xl mx-auto mt-20">
-        <div className="backdrop-blur-lg bg-white/5 p-8 rounded-xl border border-white/20 shadow-xl shadow-cyan-400/10">
-          <h2 className="text-center text-2xl text-purple-600 font-semibold mb-8">Send a Message</h2>
-
-          <form
-            action="https://formspree.io/f/YOUR_FORMSPREE_ID"
-            method="POST"
-            className="space-y-6"
-          >
-            <div className="relative">
-              <input
-                type="text"
-                name="name"
-                placeholder="Your Name"
-                required
-                className="w-full px-5 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 focus:border-transparent transition-all duration-300"
-              />
-              <div className="absolute inset-0 rounded-xl pointer-events-none border border-white/10 mix-blend-overlay"></div>
-            </div>
-
-            <div className="relative">
-              <input
-                type="email"
-                name="email"
-                placeholder="Your Email"
-                required
-                className="w-full px-5 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 focus:border-transparent transition-all duration-300"
-              />
-              <div className="absolute inset-0 rounded-xl pointer-events-none border border-white/10 mix-blend-overlay"></div>
-            </div>
-
-            <div className="relative">
-              <textarea
-                name="message"
-                rows="5"
-                placeholder="Your Message"
-                required
-                className="w-full px-5 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 focus:border-transparent transition-all duration-300 resize-none"
-              />
-              <div className="absolute inset-0 rounded-xl pointer-events-none border border-white/10 mix-blend-overlay"></div>
-            </div>
-
-            <motion.button
-              type="submit"
-              className="w-full px-8 py-4 bg-gradient-to-r from-cyan-400/90 to-purple-600/90 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-cyan-400/30 transition-all duration-300 flex items-center justify-center gap-3 relative overflow-hidden group"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <span className="relative z-10 flex items-center gap-3">
-                Send Message
-              </span>
-              <span className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-            </motion.button>
-          </form>
-        </div>
-      </div>
+      <footer className="flex flex-col gap-2 py-10 text-sm text-muted sm:flex-row sm:justify-between">
+        <p>
+          {CONTACT.location} · {CONTACT.phone}
+        </p>
+        <p>© {new Date().getFullYear()} Sagar Rajak</p>
+      </footer>
     </div>
   );
 }

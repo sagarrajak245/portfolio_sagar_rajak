@@ -1,42 +1,50 @@
-import { motion } from 'framer-motion';
-import aboutme from '../assets/about.jpg';
-import { ABOUT_TEXT } from '../constants/index';
+import portrait from "../assets/sprofile2.png";
+import { ABOUT } from "../constants";
+import SectionHeading from "../ui/SectionHeading";
 
 function About() {
   return (
-    <div className="border-b border-neutral-900 pb-4">
-      <h1 className="my-20 text-center text-4xl">
-        About <span className="text-neutral-500 ml-2">Me</span>
-      </h1>
+    <div className="section">
+      <SectionHeading title="About">
+        Agents are only as reliable as the systems they run on. I work on both.
+      </SectionHeading>
 
-      <div className="flex flex-wrap">
-        {/* Left: Image */}
-        <motion.div
-          whileInView={{ opacity: 1, x: 0 }}
-          initial={{ opacity: 0, x: -100 }}
-          transition={{ duration: 0.5 }}
-          className="w-full lg:w-1/2 lg:p-8"
-        >
-          <div className="flex items-center justify-center">
-            <img
-              src={aboutme}
-              alt="about"
-              className="rounded-xl max-w-xs md:max-w-sm lg:max-w-md"
-            />
-          </div>
-        </motion.div>
+      <div className="grid gap-12 lg:grid-cols-[280px_1fr] lg:gap-16">
+        <div className="flex flex-col gap-6">
+          <img
+            src={portrait}
+            alt="Portrait of Sagar Rajak"
+            width="500"
+            height="500"
+            loading="lazy"
+            className="aspect-square w-48 rounded-2xl border border-line object-cover sm:w-56 lg:w-full"
+          />
+          <dl className="grid grid-cols-2 gap-x-6 gap-y-4 text-sm lg:grid-cols-1">
+            {ABOUT.facts.map((f) => (
+              <div key={f.label}>
+                <dt className="text-muted">{f.label}</dt>
+                <dd className="mt-0.5 text-text">{f.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
 
-        {/* Right: Plain ABOUT_TEXT */}
-        <motion.div
-          whileInView={{ opacity: 1, x: 0 }}
-          initial={{ opacity: 0, x: 100 }}
-          transition={{ duration: 0.5 }}
-          className="w-full lg:w-1/2 flex justify-center lg:justify-start px-6"
-        >
-          <div className="my-4 max-w-xl py-6 font-light tracking-tighter text-base md:text-lg leading-relaxed text-left">
-            {ABOUT_TEXT}
+        <div>
+          <div className="max-w-prose space-y-5 text-lg leading-relaxed text-text/85">
+            {ABOUT.paragraphs.map((p) => (
+              <p key={p.slice(0, 24)}>{p}</p>
+            ))}
           </div>
-        </motion.div>
+
+          <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-3">
+            {ABOUT.focus.map((f) => (
+              <div key={f.title} className="bg-surface p-6">
+                <h3 className="text-lg font-semibold text-white">{f.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted">{f.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );

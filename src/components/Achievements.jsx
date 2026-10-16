@@ -1,58 +1,39 @@
-import { motion } from "framer-motion";
-import { ExternalLink } from "lucide-react";
-import { Achi } from "../constants";
-import GlareHover from "../ui/GlareCard";
+import { ArrowUpRight } from "lucide-react";
+import { ACHIEVEMENTS } from "../constants";
 
 function Achievements() {
   return (
-    <section id="achievements" className="py-20 px-6">
-      {/* Heading */}
-      <motion.h1
-        whileInView={{ opacity: 1, y: 0 }}
-        initial={{ opacity: 0, y: -100 }}
-        transition={{ duration: 1 }}
-        className="mb-12 text-center md:text-6xl text-4xl font-semibold bg-gradient-to-r from-stone-100 to-stone-700 bg-clip-text text-transparent"
-      >
-        Achievements and Certifications
+    <div className="mx-auto max-w-6xl px-4 pb-24 sm:px-6 md:pb-32">
+      <h2 className="mb-8 text-2xl font-semibold tracking-tight text-white md:text-3xl">
+        Certifications & recognition
+      </h2>
 
-      </motion.h1>
-
-      {/* Achievement Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2   gap-x-2 gap-y-4   place-items-center">
-        {Achi.map((ach, index) => (
-          <GlareHover
-            key={index}
-            width="100%"
-            height="auto"
-            glareColor="#ffffff"
-            glareOpacity={0.3}
-            glareAngle={-30}
-            glareSize={300}
-            transitionDuration={800}
-            playOnce={false}
-            className="w-full max-w-md p-6 rounded-xl"
-          >
-            <div className="text-left text-white space-y-3">
-              <p className="text-sm text-purple-400">{ach.year}</p>
-              <div className="flex items-start justify-between">
-                <h4 className="font-bold text-lg">{ach.title}</h4>
-                {ach.certificate && (
-                  <a
-                    href={ach.certificate}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-cyan-400 hover:text-cyan-300"
-                  >
-                    <ExternalLink size={16} />
-                  </a>
-                )}
+      <ul className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-2">
+        {ACHIEVEMENTS.map((a) => (
+          <li key={a.title} className="bg-ink">
+            <a
+              href={a.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex h-full items-start justify-between gap-4 p-5 transition-colors hover:bg-surface"
+            >
+              <div>
+                <p className="font-medium text-white">{a.title}</p>
+                <p className="mt-1 text-sm leading-relaxed text-muted">{a.description}</p>
               </div>
-              <p className="text-neutral-300 text-sm">{ach.description}</p>
-            </div>
-          </GlareHover>
+              <div className="flex shrink-0 items-center gap-2 text-sm text-muted">
+                {a.year}
+                <ArrowUpRight
+                  size={16}
+                  aria-label="Open certificate"
+                  className="transition-colors group-hover:text-signal"
+                />
+              </div>
+            </a>
+          </li>
         ))}
-      </div>
-    </section>
+      </ul>
+    </div>
   );
 }
 

@@ -1,130 +1,140 @@
-import { motion } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { AnimatePresence, motion } from "framer-motion";
+import { FileText, Menu, X } from "lucide-react";
+import { useEffect, useState } from "react";
+import { RESUME_URL } from "../constants";
+
+const NAV_ITEMS = [
+  { id: "about", label: "About" },
+  { id: "experience", label: "Experience" },
+  { id: "projects", label: "Projects" },
+  { id: "skills", label: "Skills" },
+  { id: "timeline", label: "Journey" },
+  { id: "contact", label: "Contact" },
+];
 
 const Navigation = () => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [activeSection, setActiveSection] = useState('hero');
+  const [isOpen, setIsOpen] = useState(false);
+  const [active, setActive] = useState("");
+  const [scrolled, setScrolled] = useState(false);
 
-    const navItems = [
-        { id: 'hero', label: 'Home' },
-        { id: 'about', label: 'About' },
-        { id: 'skills', label: 'Skills' },
-        { id: 'projects', label: 'Projects' },
-        { id: 'experience', label: 'Experience' },
-        { id: 'achievements', label: 'Achievements' },
-        { id: 'timeline', label: 'Timeline' },
-        { id: 'resume', label: 'Resume' },
-        { id: 'contact', label: 'Contact' },
-    ];
-
-    useEffect(() => {
-        const handleScroll = () => {
-            const sections = navItems.map((item) => document.getElementById(item.id));
-            const scrollPosition = window.scrollY + 100;
-
-            for (let i = sections.length - 1; i >= 0; i--) {
-                const section = sections[i];
-                if (section && section.offsetTop <= scrollPosition) {
-                    setActiveSection(navItems[i].id);
-                    break;
-                }
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
-
-    const scrollToSection = (sectionId) => {
-        const section = document.getElementById(sectionId);
-        if (section) {
-            section.scrollIntoView({ behavior: 'smooth' });
-        }
-        setIsOpen(false);
-    };
-
-    return (
-        <motion.nav
-            initial={{ y: -100 }}
-            animate={{ y: 0 }}
-            className="fixed top-0 left-0 right-0 z-50 px-6 py-4"
-        >
-            <div className="max-w-7xl mx-auto">
-                <div className="glass-card backdrop-blur-md bg-glass-white border border-white/20 rounded-2xl px-6 py-3">
-                    <div className="flex items-center justify-evenly">
-                        <motion.div
-                            whileHover={{ scale: 1.05 }}
-                            className="text-2xl font-bold text-cyan-400 bg-clip-text  font-cyber"
-                        >
-                            Sagar rajak
-                        </motion.div>
-
-                        {/* Desktop Navigation */}
-                        <div className="hidden md:flex items-center space-x-8">
-                            {navItems.map((item) => (
-                                <motion.button
-                                    key={item.id}
-                                    onClick={() => scrollToSection(item.id)}
-                                    className={`relative px-3 py-2 text-sm font-medium transition-colors duration-300 ${activeSection === item.id
-                                        ? 'text-white'
-                                        : 'text-gray-300 hover:text-white'
-                                        }`}
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                >
-                                    {item.label}
-                                    {activeSection === item.id && (
-                                        <motion.div
-                                            layoutId="activeTab"
-                                            className="absolute inset-0 bg-purple-800/40 rounded-lg text-white"
-                                            initial={false}
-                                            transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
-                                        />
-                                    )}
-                                </motion.button>
-                            ))}
-                        </div>
-
-                        {/* Mobile Menu Button */}
-                        <motion.button
-                            onClick={() => setIsOpen(!isOpen)}
-                            className="md:hidden p-2 text-white "
-                            whileTap={{ scale: 0.95 }}
-                        >
-                            {isOpen ? <X size={24} /> : <Menu size={24} />}
-                        </motion.button>
-                    </div>
-
-                    {/* Mobile Navigation */}
-                    {isOpen && (
-                        <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: 'auto' }}
-                            exit={{ opacity: 0, height: 0 }}
-                            className="md:hidden mt-4 pt-4 border-t border-white/20"
-                        >
-                            <div className="flex flex-col space-y-2">
-                                {navItems.map((item) => (
-                                    <motion.button
-                                        key={item.id}
-                                        onClick={() => scrollToSection(item.id)}
-                                        className={`text-left px-3 py-2 text-sm font-medium transition-colors duration-300 rounded-lg ${activeSection === item.id
-                                            ? 'text-cyber-blue bg-cyber-blue/20'
-                                            : 'text-gray-300 hover:text-white hover:bg-purple-800/40'
-                                            }`}
-                                        whileTap={{ scale: 0.95 }}
-                                    >
-                                        {item.label}
-                                    </motion.button>
-                                ))}
-                            </div>
-                        </motion.div>
-                    )}
-                </div>
-            </div>
-        </motion.nav>
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      },
+      { rootMargin: "-45% 0px -50% 0px" }
     );
+    ["hero", ...NAV_ITEMS.map((i) => i.id), "achievements"].forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, []);
+
+  // Certifications sit inside the journey part of the page.
+  const current = active === "achievements" ? "timeline" : active;
+
+  return (
+    <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-4">
+      <nav
+        aria-label="Main"
+        className={`mx-auto flex max-w-6xl items-center justify-between rounded-2xl border px-4 py-2.5 transition-colors duration-300 ${
+          scrolled || isOpen ? "border-line bg-ink/80 backdrop-blur-md" : "border-transparent"
+        }`}
+      >
+        <a href="#hero" className="font-display text-lg font-semibold tracking-tight text-white">
+          Sagar Rajak
+        </a>
+
+        <ul className="hidden items-center gap-1 md:flex">
+          {NAV_ITEMS.map((item) => (
+            <li key={item.id}>
+              <a
+                href={`#${item.id}`}
+                aria-current={current === item.id ? "true" : undefined}
+                className={`relative block rounded-lg px-3 py-1.5 text-sm transition-colors ${
+                  current === item.id ? "text-white" : "text-muted hover:text-white"
+                }`}
+              >
+                {current === item.id && (
+                  <motion.span
+                    layoutId="nav-active"
+                    className="absolute inset-0 -z-10 rounded-lg bg-raised"
+                    transition={{ type: "spring", bounce: 0.15, duration: 0.5 }}
+                  />
+                )}
+                {item.label}
+              </a>
+            </li>
+          ))}
+          <li className="ml-2">
+            <a href={RESUME_URL} target="_blank" rel="noopener noreferrer" className="btn-ghost px-4 py-1.5">
+              <FileText size={14} aria-hidden="true" />
+              Resume
+            </a>
+          </li>
+        </ul>
+
+        <button
+          type="button"
+          onClick={() => setIsOpen((o) => !o)}
+          className="rounded-lg p-2 text-white md:hidden"
+          aria-expanded={isOpen}
+          aria-controls="mobile-nav"
+          aria-label={isOpen ? "Close menu" : "Open menu"}
+        >
+          {isOpen ? <X size={22} /> : <Menu size={22} />}
+        </button>
+      </nav>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.ul
+            id="mobile-nav"
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.18 }}
+            className="mx-auto mt-2 flex max-w-6xl flex-col gap-1 rounded-2xl border border-line bg-ink/95 p-2 backdrop-blur-md md:hidden"
+          >
+            {NAV_ITEMS.map((item) => (
+              <li key={item.id}>
+                <a
+                  href={`#${item.id}`}
+                  onClick={() => setIsOpen(false)}
+                  className={`block rounded-lg px-3 py-2.5 text-sm ${
+                    current === item.id ? "bg-raised text-white" : "text-muted"
+                  }`}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+            <li>
+              <a
+                href={RESUME_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm text-signal"
+              >
+                <FileText size={14} aria-hidden="true" />
+                Resume
+              </a>
+            </li>
+          </motion.ul>
+        )}
+      </AnimatePresence>
+    </header>
+  );
 };
 
 export default Navigation;

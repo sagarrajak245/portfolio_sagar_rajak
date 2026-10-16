@@ -1,314 +1,382 @@
-import pro8 from "../assets/projects/aqi.png";
-import pro7 from "../assets/projects/crew_ai.png";
+import aqi from "../assets/projects/aqi.png";
 import dashboard from "../assets/projects/dashboard.png";
 import fraud from "../assets/projects/fraud.png";
-import pro5 from "../assets/projects/gdp.png";
-import Postify from "../assets/projects/postify.png";
-import pro1 from "../assets/projects/pro1.png";
-import pro2 from "../assets/projects/pro2.png";
-import pro4 from "../assets/projects/pro4.jpg";
-import pro6 from "../assets/projects/pro6.jpg";
+import gdp from "../assets/projects/gdp.png";
+import postify from "../assets/projects/postify.png";
 import webrtc from "../assets/projects/webrtc.png";
 import yolo from "../assets/projects/yolo.png";
 
+// Swap to the Google Drive link once it's shared:
+// view:     https://drive.google.com/file/d/<ID>/view
+// download: https://drive.google.com/uc?export=download&id=<ID>
+export const RESUME_URL = "/resume.pdf";
 
+export const CONTACT = {
+  email: "sagarrajak245@gmail.com",
+  phone: "+91 86691 01264",
+  location: "Mumbai, India",
+};
 
-export const HERO_CONTENT = `I'm a passionate Full-Stack Developer with expertise in building scalable webapps. I also explore Machine Learning and AI agents to craft intelligent, data-driven solutions. I thrive on turning ideas into impactful digital experiences`;
+export const SOCIALS = {
+  github: "https://github.com/sagarrajak245",
+  linkedin: "https://www.linkedin.com/in/sagar-rajak-4b970b290/",
+  leetcode: "https://leetcode.com/u/sagarrajak245/",
+  x: "https://twitter.com/Sagar00043",
+};
 
-export const ABOUT_TEXT = ` Hi, I'm Sagar Rajak, a third-year B.E. student in Artificial Intelligence and Data Science at VESIT, Mumbai with Current Cgpa of 9.2 . I'm a passionate Full-Stack Developer and AI enthusiast with a strong foundation in MERN stack, Flutter, and modern database systems like MongoDB, MySQL, and PostgreSQL.
+export const HERO = {
+  name: "Sagar Rajak",
+  role: "Agentic AI & Backend Engineer",
+  pitch:
+    "I build multi-agent LLM systems that run on fault-tolerant, event-driven backends — and I understand the machine learning underneath them.",
+  proof: "Founding engineer at Aiviue, shipping to Hitachi, Orange Antelopes and Tapplent.",
+};
 
-Beyond full-stack development, I have hands-on experience in Machine Learning, Time Series Analysis, and LLM-powered applications. I've built intelligent systems using CrewAI, LangChain, and Flask-based LLM backends to automate workflows like research, writing, and social media post generation.
+export const ABOUT = {
+  paragraphs: [
+    "I'm a founding engineer at Aiviue, an AI video-led hiring platform, where I've written about 90% of the MVP: the agents, the backend they run on, and the workflows that tie them together. My day-to-day is turning manual sales, screening and ops work into autonomous systems that can be trusted in production.",
+    "Before that I was a backend engineer at Kinzy Club, tuning PostgreSQL and building Redis-backed feeds on Spring Boot. I studied Artificial Intelligence and Data Science at VESIT, Mumbai, so the models inside my agents aren't a black box to me — I've trained CNNs, worked on detection and tracking, and taught ML to over a hundred students.",
+  ],
+  focus: [
+    {
+      title: "Agentic systems",
+      body: "Orchestrators, specialised domain agents and tool use with LangGraph and CrewAI. RAG over messy documents, context engineering, and tracing with LangFuse.",
+    },
+    {
+      title: "Backend & distributed systems",
+      body: "FastAPI, PostgreSQL and Redis Streams with idempotent consumers, dead-letter queues and at-least-once delivery. Observability with Prometheus and Grafana.",
+    },
+    {
+      title: "ML & deep learning",
+      body: "PyTorch, CNNs, RNNs and Transformers; YOLO-based detection and tracking; classical ML for fraud, forecasting and regression problems.",
+    },
+  ],
+  facts: [
+    { label: "Degree", value: "B.E. AI & Data Science, VESIT" },
+    { label: "CGPA", value: "9.14 / 10" },
+    { label: "Graduated", value: "January 2026" },
+    { label: "Based in", value: "Mumbai, India" },
+  ],
+};
 
-I've conducted ML workshops, mentored peers, and delivered practical projects—from classifying Spotify hits with logistic regression to building GDP predictors using clustering and regression models. I actively explore how AI agents and LLMs can solve real-world challenges and enhance productivity.
-
-I'm always excited to take on new challenges, collaborate with forward-thinking teams, and contribute to innovative tech solutions that make an impact.`;
+export const AIVIUE = {
+  company: "Aiviue",
+  role: "Agentic AI Engineer · Founding team",
+  period: "Nov 2025 – Present",
+  lead: "Owned about 90% of the MVP codebase — architecture, backend infrastructure and agentic workflows — for an AI video-generation hiring platform. Shipped the product that landed Hitachi, Orange Antelopes and Tapplent as paying clients.",
+  contributions: [
+    {
+      title: "Autonomous sales development agents",
+      body: "Multi-channel SDR automation across LinkedIn, email and WhatsApp: AI lead enrichment, qualification, personalised outreach and webhook-secured tracking in one pipeline. Cut manual marketing effort by 60%.",
+    },
+    {
+      title: "Candidate screening agents",
+      body: "Agents that engage candidates sourced from social and digital channels, run WhatsApp screening, normalise and evaluate answers, score them, and structure profiles for hiring decisions.",
+    },
+    {
+      title: "Agentic platform architecture",
+      body: "Orchestrators, specialised domain agents, event models and automated workflows across the Admin and Candidate modules, with coordinated execution and monitoring.",
+    },
+    {
+      title: "Six-agent control plane",
+      body: "Admin, Spend, Profitability, Warning, Broadcast and BulkOps agents covering cost attribution, anomaly detection, predictive analytics and automated remediation across tenants.",
+    },
+    {
+      title: "Event-driven backend",
+      body: "FastAPI, PostgreSQL and Redis Streams with idempotent consumers, dead-letter queues, schema versioning and transactional acks — at-least-once processing with zero data-loss incidents.",
+    },
+    {
+      title: "In-house voice AI",
+      body: "Replaced third-party voice orchestration with our own stack: multilingual STT/TTS, LangGraph agent workflows, real-time telephony and session lifecycle management for low-latency calls.",
+    },
+  ],
+  tech: ["Python", "FastAPI", "LangGraph", "PostgreSQL", "Redis Streams", "STT / TTS", "WhatsApp API", "Docker"],
+};
 
 export const EXPERIENCES = [
   {
-    year: "4 Nov(2024) - 4 Feb(2025)",
-    role: "Backend Developer",
-    company: "Kinzy club pvt Ltd",
-    description: [
-      "Built secure JWT-based authentication with interceptors and route protection for high user traffic.",
-      "Enhanced PostgreSQL performance by resolving full scans, adding indexes, and optimizing queries.",
-      "Implemented Redis-backed scalable feed system using partial active indexing to lower DB load.",
-      "Dockerized microservices and scheduled distributed tasks with node locking to avoid conflicts.",
-      "Developed node scheduler for server in distributed system and wrote unit tests."
+    company: "Kinzy Club Pvt Ltd",
+    note: "Subsidiary of Redscope Inc.",
+    role: "Backend Engineer",
+    period: "Nov 2024 – Feb 2025",
+    points: [
+      "Removed sequential scans on 42 high-traffic queries with targeted indexes, taking average latency from 10 ms to 2 ms.",
+      "Built a Redis-backed feed using partial active indexing to take load off the database.",
+      "Ran distributed jobs with Spring Scheduler and ShedLock so each task executes once across nodes.",
+      "Shipped JWT authentication with interceptors and route protection, covered by JUnit and MockMvc tests.",
     ],
-    technologies: ["Spring Boot", "Maven", "Docker", "Redis", "JOOQ", "PostgreSQL", "Spring-Scheduler"],
-    certificate: ""
+    tech: ["Spring Boot", "PostgreSQL", "Redis", "JOOQ", "Docker", "JUnit"],
   },
   {
-    year: "Aug 2023 - Present",
-    role: "SR.Technical officer",
-    company: "AI Colegion",
-    description: [
-      "Served as a technical officer, collaborating with members on MERN stack projects.",
-      "Conducted a Flutter workshop for 180+ students, contributing as an instructor.",
-      "Led a Machine Learning workshop for 100+ students, teaching foundational ML concepts."
+    company: "AI-Colegion",
+    role: "Technical Officer",
+    period: "Aug 2023 – May 2026",
+    points: [
+      "Led three MERN-stack club projects.",
+      "Taught 350+ students across workshops on Flutter (180+), machine learning (100+) and agentic AI with CrewAI (80+).",
     ],
-    technologies: ["Javascript", "React.js", "Figma", "MongoDB", "Multi agent AI system", "Flutter"]
+    tech: ["CrewAI", "Machine Learning", "Flutter", "MERN"],
   },
-  {
-    year: "July 2023 - July 2024",
-    role: "JR.Technical officer",
-    company: "CSI VESIT",
-    description: [
-      "Collaborated with the team to manage an AI-powered CSI app.",
-      "Conducted a workshop on OpenCV for ~180 students; served as a Teaching Assistant.",
-      "Led and conducted workshops on MERN Stack Development.",
-      "Organized technical events such as Hidden Cypher, Sherlock, and Watson."
-    ],
-    technologies: ["HTML", "CSS", "Express.js", "MongoDB", "OpenCV"]
-  },
-  {
-    year: "May 2024 - Aug 2024",
-    role: "Opensource Contributor",
-    company: "Girl Script Summer of code",
-    description: [
-      "Contributed to open source projects and developed web applications using JavaScript, React.js, and Node.js.",
-      "Designed and implemented RESTful APIs for data communication.",
-      "Collaborated with cross-functional teams to define project requirements and timelines."
-    ],
-    technologies: ["React.js", "MongoDB", "HTML", "Tailwind CSS"]
-  }
 ];
 
+export const PROJECT_FILTERS = ["All", "Agentic AI", "Backend", "ML & vision", "Web"];
 
 export const PROJECTS = [
   {
-    title: "Twitter clone web app",
-    image: pro1,
-    github: "https://github.com/sagarrajak245/fullstackproject-Twitterclone",
-    description: [
-      "Developed a full-stack Twitter clone with React.js for UI.",
-      "Implemented login/signup with JWT-based authentication.",
-      "Features include creating posts, liking posts, following users, personal profiles.",
-      "Used MongoDB for user data storage.",
-      "Set up API endpoints using Express.js and Node.js.",
-      "Used React Query for API calls and caching."
+    title: "IntelliClaim",
+    category: "Agentic AI",
+    featured: true,
+    summary: "A multi-agent system that adjudicates insurance claims against the actual policy text, and shows its reasoning live.",
+    highlights: [
+      "Orchestrator hands claims to query-understanding, document-retrieval and decision agents built with CrewAI and LangChain on Groq.",
+      "RAG over unstructured policy documents with ChromaDB and spaCy, so every decision cites the clause it relied on.",
+      "Socket.IO dashboard streams each agent's step so adjusters can see why a claim was approved or flagged.",
     ],
-    technologies: ["HTML", "CSS", "React-js", "Node.js", "MongoDB", "Express.js", "Tailwind CSS", "React Query"],
+    tech: ["CrewAI", "LangChain", "Groq", "ChromaDB", "Flask", "React", "Socket.IO"],
+    github: "https://github.com/sagarrajak245/IntelliClaim-A-Multi-Agent-AI-System-for-Insurance-Adjudication",
+    cover: "intelliclaim",
   },
   {
-    title: "Expense Tracker App",
-    image: pro2,
-    github: "https://github.com/sagarrajak245/flutter_projects/tree/master",
-    description: [
-      "Mobile app to track daily expenses.",
-      "Shows monthly spending, total income, and progress tracking.",
-      "Includes graphical charts of expenses."
+    title: "RAG pipelines, three ways",
+    category: "Agentic AI",
+    summary: "Basic, multi-agent and multi-format RAG built side by side to compare how each holds up.",
+    highlights: [
+      "Multi-agent variant runs research → answer → critique agents over the retrieved context.",
+      "Enhanced pipeline ingests PDF, TXT, CSV and DOCX with LCEL chains and a refinement pass.",
     ],
-    technologies: ["Dart", "Flutter", "Provider"],
+    tech: ["LangChain", "LangGraph", "Groq", "Vector store", "Python"],
+    github: "https://github.com/sagarrajak245/SimpleRag-MultiAgentRag-MultiFormatRag_pipelines",
+    cover: "rag",
   },
   {
-    title: "Brainwave AI UI Project",
-    image: pro4,
-    github: "https://github.com/sagarrajak245/reactjs_uiproject_brainwave",
-    description: [
-      "Frontend UI project built with React.js and Tailwind CSS.",
-      "Designed a futuristic look with responsive design.",
-      "Implemented smooth animations and interactions."
+    title: "Postify",
+    category: "Agentic AI",
+    summary: "A Chrome extension that turns course certificates in your inbox into ready-to-post LinkedIn and X updates.",
+    highlights: [
+      "Scans Gmail through OAuth2 and extracts issuer, title and completion date from certificate emails.",
+      "Drafts posts with GPT-4, Grok and Gemini side by side, then schedules or publishes in one click.",
     ],
-    technologies: ["HTML", "CSS", "React-js", "Tailwind CSS"],
-  },
-  {
-    title: "Portfolio Website",
-    image: pro6,
-    github: "https://github.com/sagarrajak245/portfolio_1",
-    description: [
-      "Personal portfolio website.",
-      "Showcases projects, skills, and contact information.",
-      "Built with React and Tailwind CSS with Daisy UI components."
-    ],
-    technologies: ["HTML", "CSS", "React", "Tailwind CSS", "Daisy UI"],
-  },
-  {
-    title: "GDP Analysis (1960 to 2024)",
-    image: pro5,
-    github: "https://github.com/sagarrajak245/ML-project-_4_steps",
-    description: [
-      "Analyzed GDP per capita trends for 180+ countries (1960–2022).",
-      "Predicted 2023 GDP using Linear Regression and Random Forest.",
-      "Evaluated models with MAE, RMSE, and R² score.",
-      "Clustered countries using K-Means and visualized with PCA.",
-      "Conducted GDP trend analysis for India by Prime Ministers.",
-      "Created timeline visualizations of India's GDP growth."
-    ],
-    technologies: ["NumPy", "Pandas", "Matplotlib", "Seaborn", "Scikit-learn", "Statsmodels"],
-  },
-  {
-    title: "Crew AI Multi-Agent System",
-    image: pro7,
-    github: "https://github.com/sagarrajak245/crewai_project",
-    description: [
-      "Developed a multi-agent system using the CrewAI library.",
-      "Agents act as researcher, writer, and editor.",
-      "Automated research, writing, and editing using LLM models."
-    ],
-    technologies: ["OpenAI", "Claude", "CrewAI Framework", "Python", "Jupyter Notebook", "Scraping Tools"],
-  },
-  {
-    title: "Air Quality Index (AQI) Prediction System",
-    image: pro8,
-    github: "https://github.com/sagarrajak245/AQI_Predictor/tree/main",
-    description: [
-      "End-to-end ML-powered web app for real-time AQI prediction.",
-      "XGBoost regression model trained in R on historical data.",
-      "Flask API connects Python with R subprocess.",
-      "Streamlit frontend for interactive user input and results.",
-      "Real-time prediction of AQI based on pollutant levels.",
-      "Integrated Plotly for historical and predicted AQI visualizations.",
-      "Designed modular architecture for easy deployment."
-    ],
-    technologies: [
-      "R", "XGBoost", "Caret", "JSONLite", "Python", "Flask",
-      "Streamlit", "Plotly", "REST API", "Subprocess", "Pandas",
-      "NumPy", "Scikit-learn", "HTML/CSS", "Git", "GitHub"
-    ],
-  },
-  {
-    title: "Postify – AI-Powered Chrome Extension",
-    image: Postify, // Add relevant image import if available
+    tech: ["React", "TypeScript", "Gmail API", "GPT-4", "Gemini", "Grok"],
     github: "https://github.com/sagarrajak245/postify_chrome_extension",
-    description: [
-      "Developed a productivity-focused Chrome Extension that automates certificate scanning from Gmail.",
-      "Parsed course metadata and generated LinkedIn/Twitter posts using GPT-4, Grok, and Gemini.",
-      "Integrated Gmail, LinkedIn, and Twitter APIs for a complete certificate-to-social pipeline."
-    ],
-    technologies: ["React", "TypeScript", "Tailwind CSS", "GPT-4", "Grok", "Gemini", "Gmail API"],
+    image: postify,
   },
   {
-    title: "Player Tracking & Re-identification System",
-    image: yolo, // Add relevant image import if available
-    github: "https://github.com/sagarrajak245/computer_vision_project",
-    description: [
-      "Built a sports analytics system to track players in real-time from videos.",
-      "Ensured consistent IDs even after players exited and re-entered the frame.",
-      "Implemented ByteTrack, DeepSORT, and StrongSORT with OSNet embeddings."
+    title: "Hindi voice assistant",
+    category: "Agentic AI",
+    summary: "A real-time voice chat that listens, thinks and replies in Hindi.",
+    highlights: [
+      "Speech-to-text with Deepgram, responses from Gemini, and natural Hindi speech from ElevenLabs.",
+      "Choice of voices and a push-to-talk interface, deployed as a live demo.",
     ],
-    technologies: ["YOLOv8", "ByteTrack", "DeepSORT", "StrongSORT", "OSNet", "Python", "OpenCV"],
+    tech: ["Deepgram", "Gemini", "ElevenLabs", "Node.js", "React"],
+    github: "https://github.com/sagarrajak245/Hindi-Convo-Bot",
+    demo: "https://hindi-convo-bot-frontend.onrender.com/",
+    cover: "voice",
   },
   {
-    title: "Financial Fraud Detection in Transactions",
-    image: fraud, // Add relevant image import if available
-    github: "https://github.com/sagarrajak245/Fraud_transaction_detection_in_payment_app",
-    description: [
-      "Developed a real-time fraud detection system on 6.3M+ transactions with extreme class imbalance.",
-      "Used SMOTE for balancing and XGBoost/Random Forest for classification.",
-      "Achieved AUPRC of 0.9979 with zero false positives/negatives."
+    title: "CrewAI content crew",
+    category: "Agentic AI",
+    summary: "A researcher, writer and editor agent that hand work to each other to produce finished articles.",
+    highlights: [
+      "Each agent has its own role, tools and scraping access; the crew passes drafts down the chain.",
     ],
-    technologies: ["Python", "XGBoost", "SMOTE", "SHAP", "Scikit-learn", "Pandas", "NumPy"],
+    tech: ["CrewAI", "OpenAI", "Claude", "Python"],
+    github: "https://github.com/sagarrajak245/crewai_project",
+    cover: "crewai",
   },
   {
-    title: "ADmyBRAND Insights Dashboard",
-    image: dashboard, // Add relevant image import if available
-    github: "https://github.com/yourusername/admybrand-insights",
-    description: [
-      "A modern, real-time analytics dashboard for digital marketing agencies with advanced data visualization and responsive design.",
-      "Features include interactive charts (line, bar, pie, scatter), campaign analytics, real-time metrics, AI bot assistant, export to PDF/CSV/JSON, and profile management.",
-      "Built with Vite, TypeScript, React, Tailwind CSS (shadcn/ui), Recharts, and Framer Motion, implementing glassmorphism UI and light/dark mode."
+    title: "FastAPI observability stack",
+    category: "Backend",
+    summary: "Metrics, logs and traces for a FastAPI service, wired end to end and load-tested.",
+    highlights: [
+      "Prometheus metrics, Loki logs and Tempo traces, all explored from Grafana dashboards.",
+      "Locust load tests to watch request rate and latency move under pressure.",
     ],
-    technologies: [
-      "React", "TypeScript", "Vite", "Tailwind CSS", "shadcn/ui", "Recharts",
-      "Framer Motion", "Lucide React", "jsPDF", "Papa Parse"
-    ],
+    tech: ["FastAPI", "Prometheus", "Grafana", "Loki", "Tempo", "Locust"],
+    github: "https://github.com/sagarrajak245/Observability-Stack-using-Prometheus-Grafana-Loki-and-Tempo.-",
+    cover: "observability",
   },
   {
-    title: "WebRTC Real-time Object Detection System through Mobile Phones",
-    image: webrtc, // Add relevant image import if available
+    title: "MiniRedis",
+    category: "Backend",
+    summary: "A Redis-like in-memory key-value server written from scratch in C++.",
+    highlights: [
+      "Strings, lists and hashes with TTL expiry, rename and flush.",
+      "Mutex-guarded multi-threaded access, plus DUMP/LOAD persistence to disk.",
+    ],
+    tech: ["C++", "Multithreading", "Persistence"],
+    github: "https://github.com/sagarrajak245/mini-redis",
+    cover: "miniredis",
+  },
+  {
+    title: "Real-time object detection over WebRTC",
+    category: "ML & vision",
+    summary: "Stream a phone camera to the browser and run YOLO detection on it live.",
+    highlights: [
+      "Two inference modes: in-browser WASM for light devices, server-side YOLOv8 for accuracy.",
+      "Under 100 ms latency in server mode and 10–30 FPS, with frame-queue backpressure.",
+      "One-command Docker setup with ngrok and a QR code to pair the phone.",
+    ],
+    tech: ["WebRTC", "YOLOv8", "ONNX Runtime", "WASM", "FastAPI", "Docker"],
     github: "https://github.com/sagarrajak245/Real-time-WebRTC-VLM-Multi-Object-Detection",
-    description: [
-      "Production-ready system for real-time multi-object detection on live video streams from mobile phones via WebRTC.",
-      "Supports dual-mode inference: client-side WASM with YOLOv5n or server-side processing with YOLOv8n.",
-      "Implements smart frame queue management with backpressure handling for smooth streaming.",
-      "Automatic ngrok tunneling with QR code generation for easy phone-to-browser connection.",
-      "Comprehensive metrics dashboard with FPS, latency, network bandwidth, and detection statistics.",
-      "Includes one-command Docker/Node.js setup and benchmark suite for performance evaluation."
+    image: webrtc,
+  },
+  {
+    title: "Player tracking & re-identification",
+    category: "ML & vision",
+    summary: "Keeps every player's ID stable in sports footage, even after they leave the frame and come back.",
+    highlights: [
+      "Compared ByteTrack, DeepSORT and StrongSORT with OSNet appearance embeddings.",
     ],
-    technologies: [
-      "WebRTC", "YOLOv5n", "YOLOv8n", "ONNX Runtime", "WASM", "Node.js",
-      "Express.js", "Docker", "ngrok", "JavaScript", "HTML", "CSS"
-    ]
-  }
-
-
+    tech: ["YOLOv8", "DeepSORT", "StrongSORT", "OSNet", "OpenCV"],
+    github: "https://github.com/sagarrajak245/player_analysis_using_yolo",
+    image: yolo,
+  },
+  {
+    title: "Fraud detection in payments",
+    category: "ML & vision",
+    summary: "Flags fraudulent transactions in a 6.3M-row dataset where fraud is extremely rare.",
+    highlights: [
+      "SMOTE for class imbalance, XGBoost and Random Forest, explained with SHAP.",
+      "AUPRC of 0.9979 on the held-out set.",
+    ],
+    tech: ["XGBoost", "SMOTE", "SHAP", "scikit-learn", "Pandas"],
+    github: "https://github.com/sagarrajak245/Fraud_transaction_detection_in_payment_app",
+    image: fraud,
+  },
+  {
+    title: "AQI prediction",
+    category: "ML & vision",
+    summary: "Predicts air quality from pollutant levels, with history and forecast charts.",
+    highlights: [
+      "XGBoost model trained in R, served through a Flask API with a Streamlit front end.",
+    ],
+    tech: ["R", "XGBoost", "Flask", "Streamlit", "Plotly"],
+    github: "https://github.com/sagarrajak245/AQI_Predictor",
+    image: aqi,
+  },
+  {
+    title: "GDP per capita, 1960–2023",
+    category: "ML & vision",
+    summary: "Six decades of GDP data across 215+ countries, with forecasts and clustering.",
+    highlights: [
+      "Linear Regression and Random Forest forecasts, K-Means clusters visualised with PCA.",
+    ],
+    tech: ["Pandas", "scikit-learn", "Statsmodels", "Seaborn"],
+    github: "https://github.com/sagarrajak245/GDP-Analysis-1960-2023",
+    image: gdp,
+  },
+  {
+    title: "ADmyBRAND Insights",
+    category: "Web",
+    summary: "An analytics dashboard for marketing agencies with live campaign metrics and exports.",
+    highlights: [
+      "Interactive charts, campaign tables, PDF/CSV export and light and dark themes.",
+    ],
+    tech: ["React", "TypeScript", "Tailwind", "shadcn/ui", "Recharts"],
+    github: "https://github.com/sagarrajak245/AD_MyBrand_Dashboard",
+    demo: "https://admybranddashboard-mu.vercel.app/",
+    image: dashboard,
+  },
 ];
 
+export const SKILLS = [
+  {
+    group: "Agentic AI & LLMs",
+    items: ["LangGraph", "LangChain", "CrewAI", "RAG", "Context engineering", "Tool calling", "LangFuse", "OpenAI / Gemini / Groq"],
+  },
+  {
+    group: "Backend & distributed systems",
+    items: ["FastAPI", "Flask", "Spring Boot", "Node.js", "Redis Streams", "Redis", "Docker", "REST & webhooks"],
+  },
+  {
+    group: "ML & deep learning",
+    items: ["PyTorch", "scikit-learn", "CNN / RNN", "Transformers", "YOLO", "OpenCV", "XGBoost", "Pandas"],
+  },
+  {
+    group: "Data & vector stores",
+    items: ["PostgreSQL", "MongoDB", "ChromaDB", "pgvector", "MySQL"],
+  },
+  {
+    group: "Cloud, CI & observability",
+    items: ["AWS (EC2, S3, Lambda)", "GitHub Actions", "Jenkins", "Prometheus", "Grafana", "Linux"],
+  },
+  {
+    group: "Languages & frontend",
+    items: ["Python", "Java", "C / C++", "SQL", "JavaScript", "TypeScript", "React", "Next.js", "Tailwind"],
+  },
+];
 
-export const CONTACT = {
-  Address: "New mumbai, Maharashtra, India.",
-  phoneNo: "8669101264 ",
-  email: "sagarrajak245@gmail.com",
-};
+export const TIMELINE = [
+  { year: "2026", title: "Graduated, B.E. AI & Data Science", place: "VESIT, Mumbai", note: "CGPA 9.14 / 10" },
+  { year: "2025", title: "Agentic AI Engineer, founding team", place: "Aiviue", note: "Agents, event-driven backend and voice AI for an AI hiring platform." },
+  { year: "2024", title: "Backend Engineer", place: "Kinzy Club", note: "PostgreSQL tuning, Redis feeds and distributed scheduling on Spring Boot." },
+  { year: "2024", title: "Smart India Hackathon finalist", place: "National", note: "Built Drona, an LMS with AI content generation and learning roadmaps." },
+  { year: "2024", title: "Open-source contributor", place: "GirlScript Summer of Code", note: "React and Node.js contributions and REST APIs." },
+  { year: "2023", title: "Technical Officer", place: "AI-Colegion", note: "Ran Flutter, ML and agentic AI workshops for 350+ students." },
+  { year: "2023", title: "Jr. Technical Officer", place: "CSI VESIT", note: "OpenCV and MERN workshops; ran Hidden Cypher, Sherlock and Watson events." },
+  { year: "2022", title: "Started B.E. in AI & Data Science", place: "VESIT, Mumbai", note: "MHT-CET 97.25 percentile." },
+];
 
-export const Achi = [
+export const ACHIEVEMENTS = [
+  {
+    title: "Smart India Hackathon 2024 finalist",
+    year: "2024",
+    link: "https://drive.google.com/file/d/11joQAOfic0QfkFDkM0eqqHTxXo6_pwed/view?usp=sharing",
+    description: "Smart Education theme — built Drona, an LMS with AI content generation, roadmaps and analytics.",
+  },
   {
     title: "NVIDIA: Fundamentals of Deep Learning",
     year: "2023",
-    certificate: "https://drive.google.com/file/d/1b5GTJIk7YtOARbjzR70SVVo0MvIScKAa/view?usp=sharing",
-    description: "Completed NVIDIA’s foundational course on Deep Learning, covering neural networks, backpropagation, and training techniques."
+    link: "https://drive.google.com/file/d/1b5GTJIk7YtOARbjzR70SVVo0MvIScKAa/view?usp=sharing",
+    description: "Neural networks, backpropagation and training techniques.",
   },
   {
     title: "NVIDIA: Anomaly Detection",
     year: "2023",
-    certificate: "https://drive.google.com/file/d/1Er0zjG9nt0QDCEUEhPjHAog3zXQSaAJT/view?usp=sharing",
-    description: "Learned anomaly detection techniques using deep learning frameworks for predictive maintenance and outlier detection."
+    link: "https://drive.google.com/file/d/1Er0zjG9nt0QDCEUEhPjHAog3zXQSaAJT/view?usp=sharing",
+    description: "Deep-learning approaches to outlier detection and predictive maintenance.",
+  },
+  {
+    title: "AWS Cloud Fundamentals",
+    year: "2023",
+    link: "https://drive.google.com/file/d/1iW5GLNuFDVheNOnObZRkLUdQArKstc5F/view?usp=sharing",
+    description: "Core AWS services and architecture: EC2, S3, Lambda and IAM.",
   },
   {
     title: "MATLAB: Machine Learning",
     year: "2023",
-    certificate: "https://drive.google.com/file/d/1IjJwyilrh12g_97X2fBR0moeGJqEKmso/view?usp=sharing",
-    description: "Completed MATLAB’s certification on core machine learning concepts including classification and regression models."
+    link: "https://drive.google.com/file/d/1IjJwyilrh12g_97X2fBR0moeGJqEKmso/view?usp=sharing",
+    description: "Classification and regression models.",
   },
   {
     title: "MATLAB: Data Visualization",
     year: "2023",
-    certificate: "https://drive.google.com/file/d/1bH-est_CXCEc_8z25bK4Dc0B2yVzwgZl/view?usp=sharing",
-    description: "Gained skills in effective data visualization techniques using MATLAB’s graphical libraries and data plotting features."
+    link: "https://drive.google.com/file/d/1bH-est_CXCEc_8z25bK4Dc0B2yVzwgZl/view?usp=sharing",
+    description: "Plotting and visual analysis of data.",
   },
   {
-    title: "AWS: Cloud Fundamentals",
+    title: "Flutter Fundamentals — Udemy",
     year: "2023",
-    certificate: "https://drive.google.com/file/d/1iW5GLNuFDVheNOnObZRkLUdQArKstc5F/view?usp=sharing",
-    description: "Understood the foundational services and architecture of AWS Cloud including EC2, S3, Lambda, and IAM."
+    link: "https://drive.google.com/file/d/1hmT7Vb8wz8oLoIyEipzlEXRrsu6vFI5l/view?usp=sharing",
+    description: "Widgets, state management and UI development.",
   },
   {
-    title: "Flutter Fundamentals - Udemy",
+    title: "Web Development — Udemy",
     year: "2023",
-    certificate: "https://drive.google.com/file/d/1hmT7Vb8wz8oLoIyEipzlEXRrsu6vFI5l/view?usp=sharing",
-    description: "Completed a beginner-to-advanced course on Flutter, covering widgets, state management, and UI development."
+    link: "https://drive.google.com/file/d/1WmgxCjcDUYdxHOm-VkhfdnfyaJgDbgDL/view?usp=drive_link",
+    description: "Full-stack training with HTML, CSS, JavaScript, React, Node.js and MongoDB.",
   },
   {
-    title: "Web Development Complete Course - Udemy",
-    year: "2023",
-    certificate: "https://drive.google.com/file/d/1WmgxCjcDUYdxHOm-VkhfdnfyaJgDbgDL/view?usp=drive_link",
-    description: "Completed full-stack web development training with HTML, CSS, JavaScript, React, Node.js, and MongoDB."
+    title: "Best Technical Speaker — Awakening the Scientist",
+    year: "2022",
+    link: "https://drive.google.com/file/d/1KnJcGgiWZh6FeI-YHohjEdvRZ6cmK80j/view?usp=sharing",
+    description: "Presented ideas on optical specs and bionic-eye vision enhancement.",
   },
   {
-    title: "Smart India Hackathon 2024 Finalist",
-    year: "2023–2024",
-    certificate: "https://drive.google.com/file/d/11joQAOfic0QfkFDkM0eqqHTxXo6_pwed/view?usp=sharing",
-    description: `Finalist at Smart India Hackathon 2024 under the Smart Education theme. Developed "Drona" — a full-fledged LMS platform with AI-powered content generation, roadmap creation, and analytics.`
+    title: "Dalal Street finalist — trading game",
+    year: "2022",
+    link: "https://drive.google.com/file/d/1H8eG2mUQ4KQS8k0ov242UcIj3nw_fIOw/view?usp=sharing",
+    description: "Top 15 nationally in a stock market simulation.",
   },
-  {
-    title: "ATS Best Technical Speaker – Awakening the Scientist",
-    year: "2022–2023",
-    certificate: "https://drive.google.com/file/d/1KnJcGgiWZh6FeI-YHohjEdvRZ6cmK80j/view?usp=sharing",
-    description: "Received award for presenting innovative ideas on optical specs and enhancing vision using bionic eye technology."
-  },
-  {
-    title: "Dalal Street Finalist – Trade Game",
-    year: "2022–2023",
-    certificate: "https://drive.google.com/file/d/1H8eG2mUQ4KQS8k0ov242UcIj3nw_fIOw/view?usp=sharing",
-    description: "Secured a top-15 spot nationally in a stock market simulation competition demonstrating analytical and trading skills."
-  },
-  {
-    title: "MHT-CET State Rank – Top 5000",
-    year: "2021",
-    certificate: "",  // No link available in resume
-    description: "Achieved a top 5000 state-level rank among 300,000+ students in the MHT-CET entrance exam for engineering."
-  }
-
 ];
-
