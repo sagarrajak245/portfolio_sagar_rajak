@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { botStore } from "../bot/botStore";
 import { HERO } from "../constants";
 import { APPS } from "./apps";
 
@@ -11,14 +12,16 @@ const CORNER = {
   br: "md:bottom-10 md:right-10 md:text-right",
 };
 
-function AppIcon({ app, onFocusApp }) {
+function AppIcon({ app }) {
+  const focus = (id) => botStore.focus(id);
   return (
     <Link
       to={app.path}
-      onMouseEnter={() => onFocusApp?.(app.id)}
-      onFocus={() => onFocusApp?.(app.id)}
-      onMouseLeave={() => onFocusApp?.(null)}
-      onBlur={() => onFocusApp?.(null)}
+      data-app={app.id}
+      onMouseEnter={() => focus(app.id)}
+      onFocus={() => focus(app.id)}
+      onMouseLeave={() => focus(null)}
+      onBlur={() => focus(null)}
       className={`group block border border-line bg-surface/70 p-4 transition-colors hover:border-phos/70 md:absolute md:border-0 md:bg-transparent md:p-2 ${CORNER[app.corner]}`}
     >
       <span className="block text-xs text-phos/60 group-hover:text-phos">{app.file}</span>
@@ -30,9 +33,10 @@ function AppIcon({ app, onFocusApp }) {
   );
 }
 
-function Desktop({ onFocusApp }) {
+function Desktop() {
   useEffect(() => {
     document.title = `${HERO.name} · ${HERO.role}`;
+    return () => botStore.focus(null);
   }, []);
 
   return (
@@ -56,13 +60,13 @@ function Desktop({ onFocusApp }) {
           {HERO.name}
         </h1>
         <p className="mt-6 max-w-md text-sm leading-relaxed text-text/80">{HERO.proof}</p>
-        {/* The 3D bot mounts beside the name in phase 2. */}
-        <div id="bot-anchor" className="h-0 w-0" />
+        {/* The guide bot (src/bot) measures this spot and stands on it. */}
+        <div id="bot-anchor" className="h-36 w-full md:h-0 md:w-0" />
       </section>
 
-      <nav aria-label="Apps" className="relative mt-10 grid grid-cols-2 gap-3 md:static md:mt-0 md:block">
+      <nav aria-label="Apps" className="relative mt-4 grid grid-cols-2 gap-3 md:static md:mt-0 md:block">
         {APPS.map((app) => (
-          <AppIcon key={app.id} app={app} onFocusApp={onFocusApp} />
+          <AppIcon key={app.id} app={app} />
         ))}
       </nav>
     </main>

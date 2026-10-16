@@ -1,5 +1,6 @@
 import { lazy, Suspense, useCallback, useState } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
+import BotLayer from "./bot/BotLayer";
 import AppShell from "./os/AppShell";
 import { BOOT_KEY } from "./os/apps";
 import Boot from "./os/Boot";
@@ -55,6 +56,7 @@ function App() {
               </Route>
             </Routes>
           </Suspense>
+          <BotLayer />
         </>
       ) : (
         <Boot onEnter={enter} />
