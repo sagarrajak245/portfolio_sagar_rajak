@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@300..700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Inter:wght@400..600&family=JetBrains+Mono:wght@400;500&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,59 +6,52 @@
 
 @layer base {
   html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 5rem;
     background: theme('colors.ink');
   }
 
   body {
-    @apply bg-ink font-sans text-text antialiased;
-    font-feature-settings: "cv11", "ss01";
-  }
-
-  h1, h2, h3 {
-    @apply font-display;
-    font-optical-sizing: auto;
+    @apply bg-ink font-mono text-text antialiased;
   }
 
   ::selection {
-    @apply bg-signal/30 text-white;
+    @apply bg-signal/30 text-bright;
   }
 
   :focus-visible {
-    outline: 2px solid theme('colors.signal');
+    outline: 2px solid theme('colors.phos');
     outline-offset: 3px;
-    border-radius: 6px;
   }
 }
 
 @layer components {
-  .section {
-    @apply mx-auto max-w-6xl px-4 py-24 sm:px-6 md:py-32;
+  /* Phosphor glow for display text */
+  .glow {
+    text-shadow: 0 0 6px rgba(127, 243, 247, 0.45), 0 0 22px rgba(92, 225, 230, 0.18);
   }
 
   .chip {
-    @apply inline-flex items-center gap-1.5 rounded-md border border-line bg-surface px-2.5 py-1 text-xs text-muted;
+    @apply inline-flex items-center border border-line bg-surface px-2 py-0.5 font-mono text-xs text-muted;
   }
 
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-colors duration-200;
+    @apply inline-flex items-center justify-center gap-2 border px-4 py-2 font-mono text-sm transition-colors duration-150;
   }
 
   .btn-primary {
-    @apply btn bg-signal text-ink hover:bg-white;
+    @apply btn border-phos bg-phos text-ink hover:bg-bright;
   }
 
   .btn-ghost {
-    @apply btn border border-line text-text hover:border-signal/60 hover:text-white;
+    @apply btn border-line text-text hover:border-phos hover:text-bright;
+  }
+
+  /* Dotted leader between a label and its value, as in boot logs */
+  .leader {
+    @apply mx-2 min-w-[1.5rem] flex-1 translate-y-[-0.25em] border-b border-dotted border-muted/60;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
   *,
   *::before,
   *::after {
