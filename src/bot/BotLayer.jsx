@@ -20,23 +20,39 @@ function useMediaQuery(query) {
   return match;
 }
 
-function useIdle(enabled) {
-  const [idle, setIdle] = useState(false);
+// The 3D bot waits for the visitor's first move (pointer, key, touch, scroll)
+// and then an idle moment, so three.js never competes with the first paint.
+// Until then the static fallback image stands in.
+const WAKE_EVENTS = ["pointermove", "pointerdown", "keydown", "touchstart", "scroll", "wheel"];
+
+function useWarm(enabled) {
+  const [warm, setWarm] = useState(false);
   useEffect(() => {
     if (!enabled) return undefined;
-    if ("requestIdleCallback" in window) {
-      const id = window.requestIdleCallback(() => setIdle(true), { timeout: 2000 });
-      return () => window.cancelIdleCallback(id);
-    }
-    const t = setTimeout(() => setIdle(true), 600);
-    return () => clearTimeout(t);
+    let idleId = 0;
+    let timer = 0;
+    const go = () => {
+      WAKE_EVENTS.forEach((e) => window.removeEventListener(e, go));
+      if ("requestIdleCallback" in window) idleId = window.requestIdleCallback(() => setWarm(true), { timeout: 1500 });
+      else timer = setTimeout(() => setWarm(true), 200);
+    };
+    WAKE_EVENTS.forEach((e) => window.addEventListener(e, go, { passive: true, once: true }));
+    return () => {
+      WAKE_EVENTS.forEach((e) => window.removeEventListener(e, go));
+      if (idleId) window.cancelIdleCallback(idleId);
+      clearTimeout(timer);
+    };
   }, [enabled]);
-  return idle;
+  return warm;
 }
 
 function bubbleStyle(spot, height) {
   const room = (px) => ({ maxWidth: Math.max(160, Math.min(260, px)) });
   if (spot.bubble === "up-left") return { right: -24, bottom: height + 4, ...room(spot.x + 8) };
+  if (spot.bubble === "side-left") {
+    const right = (STAGE.w * spot.scale) / 2 - 6;
+    return { right, bottom: height * 0.42, ...room(spot.x - right - 16) };
+  }
   if (spot.bubble === "side-right") {
     const left = (STAGE.w * spot.scale) / 2 - 6;
     return { left, bottom: height * 0.42, ...room(window.innerWidth - spot.x - left - 16) };
@@ -49,8 +65,8 @@ function BotLayer() {
   const { focus, say } = useBotState();
   const caps = useCapabilities();
   const wide = useMediaQuery("(min-width: 768px)");
-  const idle = useIdle(caps.canRun3D);
-  const [ready, setReady] = useState(!caps.canRun3D);
+  const warm = useWarm(caps.canRun3D);
+  const [ready, setReady] = useState(false);
   const onReady = useCallback(() => setReady(true), []);
 
   const { spot, moveMs, facing, act, open, line, onActionDone, onBotClick } = useBotDirector({
@@ -74,7 +90,7 @@ function BotLayer() {
       }}
     >
       <div
-        className={`absolute transition-[transform,opacity] duration-300 ${ready ? "opacity-100" : "opacity-0"}`}
+        className="absolute transition-transform duration-300"
         style={{
           width: STAGE.w,
           height: STAGE.h,
@@ -88,20 +104,15 @@ function BotLayer() {
           aria-hidden="true"
           className="absolute bottom-1 left-1/2 h-4 w-28 -translate-x-1/2 rounded-[50%] bg-phos/20 blur-md"
         />
-        {caps.canRun3D ? (
-          idle && (
-            <Suspense fallback={null}>
-              <BotStage
-                action={act}
-                facing={facing}
-                onActionDone={onActionDone}
-                onReady={onReady}
-                touch={caps.touch}
-              />
-            </Suspense>
-          )
-        ) : (
-          <BotFallback />
+        {caps.canRun3D && warm && (
+          <Suspense fallback={null}>
+            <BotStage action={act} facing={facing} onActionDone={onActionDone} onReady={onReady} touch={caps.touch} />
+          </Suspense>
+        )}
+        {!(caps.canRun3D && ready) && (
+          <div className="absolute inset-0">
+            <BotFallback />
+          </div>
         )}
         <button
           type="button"
@@ -110,7 +121,12 @@ function BotLayer() {
           className="pointer-events-auto absolute inset-x-12 bottom-2 top-6 cursor-pointer rounded-full"
         />
       </div>
-      {ready && <BotBubble line={line} open={open && !moveMs} style={bubbleStyle(spot, height)} reducedMotion={caps.reducedMotion} />}
+      <BotBubble
+        line={line}
+        open={open && !moveMs}
+        style={bubbleStyle(spot, height)}
+        reducedMotion={caps.reducedMotion}
+      />
     </div>
   );
 }

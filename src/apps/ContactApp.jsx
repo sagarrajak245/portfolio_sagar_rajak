@@ -4,6 +4,7 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { RiTwitterXLine } from "react-icons/ri";
 import { SiLeetcode } from "react-icons/si";
 import { botStore } from "../bot/botStore";
+import { sound } from "../os/sound";
 import { CONTACT, RESUME_URL, SOCIALS } from "../constants";
 
 const CHANNELS = [
@@ -26,6 +27,7 @@ function ContactApp() {
     try {
       await navigator.clipboard.writeText(CONTACT.email);
       setCopied(true);
+      sound.play("select");
       botStore.say("Copied. Paste it into your mail app and he'll get it.");
     } catch {
       window.location.href = `mailto:${CONTACT.email}`;

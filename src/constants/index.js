@@ -1,15 +1,15 @@
-import aqi from "../assets/projects/aqi.png";
-import dashboard from "../assets/projects/dashboard.png";
-import fraud from "../assets/projects/fraud.png";
-import gdp from "../assets/projects/gdp.png";
-import postify from "../assets/projects/postify.png";
-import webrtc from "../assets/projects/webrtc.png";
-import yolo from "../assets/projects/yolo.png";
+import aqi from "../assets/projects/aqi.webp";
+import dashboard from "../assets/projects/dashboard.webp";
+import fraud from "../assets/projects/fraud.webp";
+import gdp from "../assets/projects/gdp.webp";
+import postify from "../assets/projects/postify.webp";
+import webrtc from "../assets/projects/webrtc.webp";
+import yolo from "../assets/projects/yolo.webp";
 
 // Swap to the Google Drive link once it's shared:
 // view:     https://drive.google.com/file/d/<ID>/view
 // download: https://drive.google.com/uc?export=download&id=<ID>
-export const RESUME_URL = "/resume.pdf";
+export const RESUME_URL = "https://drive.google.com/file/d/1JkEGRzKjMsvxs3_E_ZnjGuoMlbG-mxor/view?usp=sharing";
 
 export const CONTACT = {
   email: "sagarrajak245@gmail.com",

@@ -19,11 +19,11 @@ function AppShell() {
 
   useEffect(() => {
     const onKey = (e) => {
-      if (e.key === "Escape") navigate("/");
+      if (e.key === "Escape") navigate("/", { state: { from: app?.id } });
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [navigate]);
+  }, [navigate, app]);
 
   return (
     <div className="min-h-[100svh] pt-11">
@@ -37,7 +37,7 @@ function AppShell() {
           <span className="hidden sm:inline">esc · </span>back to desktop
         </Link>
       </div>
-      <main id="main" ref={mainRef} tabIndex={-1} className="outline-none">
+      <main id="main" ref={mainRef} tabIndex={-1} aria-label={app?.title ?? "Not found"} className="outline-none">
         <Outlet />
       </main>
     </div>

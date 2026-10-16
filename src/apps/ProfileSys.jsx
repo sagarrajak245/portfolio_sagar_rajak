@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { ExternalLink } from "lucide-react";
-import portrait from "../assets/sprofile2.png";
+import portrait from "../assets/sprofile2.webp";
 import { ABOUT, ACHIEVEMENTS, HERO, SKILLS } from "../constants";
 
 function Section({ title, command, children }) {
@@ -30,8 +30,8 @@ function ProfileSys() {
           <img
             src={portrait}
             alt={`Portrait of ${HERO.name}`}
-            width={500}
-            height={500}
+            width={440}
+            height={440}
             loading="lazy"
             decoding="async"
             className="aspect-square w-40 border border-phos/40 object-cover grayscale-[35%] md:w-full"

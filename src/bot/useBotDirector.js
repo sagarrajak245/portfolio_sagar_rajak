@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { BOT_LINES } from "../constants/bot";
+import { sound } from "../os/sound";
 import { botStore } from "./botStore";
 import { APPS } from "../os/apps";
 
@@ -53,7 +54,8 @@ function computeSpot(pathname, focus, wide) {
       ...home,
       key: app.id,
       x: left ? twin.right + 120 : twin.left - 120,
-      bubble: left ? "up-left" : "up-right",
+      // Sideways, toward the middle, so the bubble stays below the name.
+      bubble: left ? "side-right" : "side-left",
       gesture: "Yes",
     };
   }
@@ -164,10 +166,11 @@ export default function useBotDirector({ pathname, focus, say, wide, reducedMoti
     (id) => {
       if (id === idRef.current) play("Idle", false);
     },
-    [play]
+    [play],
   );
 
   const onBotClick = useCallback(() => {
+    sound.play("select");
     if (pathname === "/") {
       play("Wave");
       setOpen(true);

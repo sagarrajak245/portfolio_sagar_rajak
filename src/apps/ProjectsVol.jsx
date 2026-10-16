@@ -4,11 +4,16 @@ import { useEffect, useMemo } from "react";
 import { FaGithub } from "react-icons/fa";
 import { useSearchParams } from "react-router-dom";
 import { botStore } from "../bot/botStore";
+import { sound } from "../os/sound";
 import { PROJECT_FILTERS, PROJECTS } from "../constants";
 import { BOT_LINES } from "../constants/bot";
 import ProjectCover from "../ui/ProjectCover";
 
-const slug = (title) => title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+const slug = (title) =>
+  title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
 const pad = (n) => String(n).padStart(2, "0");
 
 function Cover({ project }) {
@@ -90,6 +95,7 @@ function ProjectsVol() {
   const show = (i) => {
     const next = list[(i + list.length) % list.length];
     update({ p: slug(next.title) });
+    sound.play("select");
     const line = BOT_LINES.projects[next.title];
     if (line) botStore.say(line);
   };
@@ -97,6 +103,7 @@ function ProjectsVol() {
   const pickFilter = (f) => {
     const count = f === "All" ? PROJECTS.length : PROJECTS.filter((p) => p.category === f).length;
     update({ f: f === "All" ? null : f, p: null });
+    sound.play("select");
     botStore.say(BOT_LINES.filter(count, f));
   };
 
@@ -134,7 +141,9 @@ function ProjectsVol() {
             aria-pressed={f === filter}
             onClick={() => pickFilter(f)}
             className={`btn shrink-0 py-1.5 text-[13px] ${
-              f === filter ? "border-phos bg-phos/10 text-bright" : "border-line text-muted hover:border-phos/60 hover:text-text"
+              f === filter
+                ? "border-phos bg-phos/10 text-bright"
+                : "border-line text-muted hover:border-phos/60 hover:text-text"
             }`}
           >
             {f}
@@ -170,14 +179,14 @@ function ProjectsVol() {
         <section aria-label="Selected project" className="order-1 min-w-0 md:order-2">
           <Viewer key={project.title} project={project} />
           <div className="mt-8 flex items-center gap-3 border-t border-line pt-4 text-sm">
-            <button type="button" onClick={() => show(index - 1)} className="btn-ghost px-3" aria-label="Previous project">
+            <button type="button" onClick={() => show(index - 1)} className="btn-ghost px-3">
               <ChevronLeft size={16} aria-hidden="true" />
-              Prev
+              Previous
             </button>
             <span className="text-muted">
               <span className="text-bright">{pad(index + 1)}</span> / {pad(list.length)}
             </span>
-            <button type="button" onClick={() => show(index + 1)} className="btn-ghost px-3" aria-label="Next project">
+            <button type="button" onClick={() => show(index + 1)} className="btn-ghost px-3">
               Next
               <ChevronRight size={16} aria-hidden="true" />
             </button>

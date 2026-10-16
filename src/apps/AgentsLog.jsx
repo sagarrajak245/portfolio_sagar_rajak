@@ -2,6 +2,7 @@
 import { FileText } from "lucide-react";
 import { useRef, useState } from "react";
 import { botStore } from "../bot/botStore";
+import { sound } from "../os/sound";
 import { RESUME_URL } from "../constants";
 import { COMMITS, LANES } from "../constants/gitlog";
 
@@ -126,6 +127,7 @@ function AgentsLog() {
   const select = (r, focus = false) => {
     const next = Math.max(0, Math.min(LAST, r));
     setSel(next);
+    sound.play("select");
     if (focus) buttons.current[next]?.focus();
     const line = COMMITS[next].bot;
     if (line) botStore.say(line);

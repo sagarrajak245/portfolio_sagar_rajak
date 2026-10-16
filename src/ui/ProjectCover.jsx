@@ -8,7 +8,7 @@ const C = {
   node: "#111A2E",
   line: "#22304F",
   text: "#D6ECF0",
-  muted: "#6C7A99",
+  muted: "#7C8AAA",
   signal: "#5CE1E6",
   violet: "#A78BFA",
 };
