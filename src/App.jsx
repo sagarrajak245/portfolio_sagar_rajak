@@ -1,57 +1,87 @@
-import About from "./components/About";
-import Achievements from "./components/Achievements";
-import Contact from "./components/Contact";
-import Experience from "./components/Experience";
-import Hero from "./components/Hero";
-import Navigation from "./components/Navigation";
-import Projects from "./components/Projects";
-import Technologies from "./components/Technologies";
-import Timeline from "./components/Timeline";
+import { lazy, Suspense, useCallback, useEffect, useRef, useState } from "react";
+import { Route, Routes, useLocation } from "react-router-dom";
+import BotLayer from "./bot/BotLayer";
+import AppShell from "./os/AppShell";
+import { BOOT_KEY } from "./os/apps";
+import Boot from "./os/Boot";
+import CrtOverlay from "./os/CrtOverlay";
+import Desktop from "./os/Desktop";
+import MenuBar from "./os/MenuBar";
+import { sound } from "./os/sound";
+
+const AgentsLog = lazy(() => import("./apps/AgentsLog"));
+const ProjectsVol = lazy(() => import("./apps/ProjectsVol"));
+const ProfileSys = lazy(() => import("./apps/ProfileSys"));
+const ContactApp = lazy(() => import("./apps/ContactApp"));
+const NotFound = lazy(() => import("./apps/NotFound"));
+
+function readBooted() {
+  try {
+    return localStorage.getItem(BOOT_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
 
 function App() {
-  return (
-    <div className="relative overflow-x-clip">
-      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[900px]">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_60%_-10%,rgba(167,139,250,0.22),transparent)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_40%_40%_at_10%_10%,rgba(92,225,230,0.07),transparent)]" />
-      </div>
+  const { pathname } = useLocation();
+  // Boot only on a first visit that lands on the desktop; deep links skip it.
+  const [booted, setBooted] = useState(() => pathname !== "/" || readBooted());
 
+  const enter = useCallback(() => {
+    sound.play("boot");
+    setBooted(true);
+    try {
+      localStorage.setItem(BOOT_KEY, "1");
+    } catch {
+      /* private mode: boot again next time */
+    }
+  }, []);
+
+  // Opening an app chirps up, going home chirps down. Not on the first render.
+  const prevPath = useRef(pathname);
+  useEffect(() => {
+    if (prevPath.current === pathname) return;
+    sound.play(pathname === "/" ? "close" : "open");
+    prevPath.current = pathname;
+  }, [pathname]);
+
+  return (
+    <>
       <a
         href="#main"
-        className="sr-only z-[60] rounded-lg bg-signal px-4 py-2 text-ink focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
+        className="sr-only z-[60] bg-phos px-4 py-2 text-ink focus:not-sr-only focus:fixed focus:left-4 focus:top-14"
       >
         Skip to content
       </a>
 
-      <Navigation />
+      {booted ? (
+        <>
+          <MenuBar />
+          <Suspense fallback={null}>
+            {/* Each screen powers on like a CRT. Clip-path, not transform, so
+                the bot's layout measurements stay true mid-animation. */}
+            <div key={pathname} className="animate-power-on">
+              <Routes>
+                <Route path="/" element={<Desktop />} />
+                <Route element={<AppShell />}>
+                  <Route path="/agents" element={<AgentsLog />} />
+                  <Route path="/projects" element={<ProjectsVol />} />
+                  <Route path="/profile" element={<ProfileSys />} />
+                  <Route path="/contact" element={<ContactApp />} />
+                  <Route path="*" element={<NotFound />} />
+                </Route>
+              </Routes>
+            </div>
+          </Suspense>
+          <BotLayer />
+        </>
+      ) : (
+        <Boot onEnter={enter} />
+      )}
 
-      <main id="main">
-        <section id="hero">
-          <Hero />
-        </section>
-        <section id="about">
-          <About />
-        </section>
-        <section id="experience">
-          <Experience />
-        </section>
-        <section id="projects">
-          <Projects />
-        </section>
-        <section id="skills">
-          <Technologies />
-        </section>
-        <section id="timeline">
-          <Timeline />
-        </section>
-        <section id="achievements">
-          <Achievements />
-        </section>
-        <section id="contact">
-          <Contact />
-        </section>
-      </main>
-    </div>
+      <CrtOverlay />
+    </>
   );
 }
 
