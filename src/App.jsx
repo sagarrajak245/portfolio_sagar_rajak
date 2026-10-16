@@ -8,7 +8,11 @@ import CrtOverlay from "./os/CrtOverlay";
 import Desktop from "./os/Desktop";
 import MenuBar from "./os/MenuBar";
 
-const Placeholder = lazy(() => import("./apps/Placeholder"));
+const AgentsLog = lazy(() => import("./apps/AgentsLog"));
+const ProjectsVol = lazy(() => import("./apps/ProjectsVol"));
+const ProfileSys = lazy(() => import("./apps/ProfileSys"));
+const ContactApp = lazy(() => import("./apps/ContactApp"));
+const NotFound = lazy(() => import("./apps/NotFound"));
 
 function readBooted() {
   try {
@@ -48,11 +52,11 @@ function App() {
             <Routes>
               <Route path="/" element={<Desktop />} />
               <Route element={<AppShell />}>
-                <Route path="/agents" element={<Placeholder />} />
-                <Route path="/projects" element={<Placeholder />} />
-                <Route path="/profile" element={<Placeholder />} />
-                <Route path="/contact" element={<Placeholder />} />
-                <Route path="*" element={<Placeholder />} />
+                <Route path="/agents" element={<AgentsLog />} />
+                <Route path="/projects" element={<ProjectsVol />} />
+                <Route path="/profile" element={<ProfileSys />} />
+                <Route path="/contact" element={<ContactApp />} />
+                <Route path="*" element={<NotFound />} />
               </Route>
             </Routes>
           </Suspense>

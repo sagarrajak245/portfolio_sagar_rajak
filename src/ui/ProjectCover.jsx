@@ -3,12 +3,12 @@
 // Drawn with the same tokens as the hero agent graph.
 
 const C = {
-  ink: "#0B0F1C",
-  surface: "#121829",
-  node: "#161C33",
-  line: "#2A3452",
-  text: "#E7E9F2",
-  muted: "#8B92AB",
+  ink: "#070B14",
+  surface: "#0C1322",
+  node: "#111A2E",
+  line: "#22304F",
+  text: "#D6ECF0",
+  muted: "#6C7A99",
   signal: "#5CE1E6",
   violet: "#A78BFA",
 };

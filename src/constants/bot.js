@@ -25,5 +25,13 @@ export const BOT_LINES = {
     ],
     "/contact": ["Email is the fastest way to reach him. I'll pass it on."],
   },
+  // Spoken when a project is opened in projects.vol.
+  projects: {
+    IntelliClaim: "IntelliClaim makes every decision cite the policy clause it relied on.",
+    MiniRedis: "TTLs, hashes, threads and persistence, all hand-rolled in C++.",
+    "Hindi voice assistant": "A voice agent that talks back in Hindi. There is a live demo.",
+    "Real-time object detection over WebRTC": "Point a phone camera at the room and YOLO tags objects in under 100 ms.",
+  },
+  filter: (n, f) => (f === "All" ? `All ${n} builds are back.` : `${n} ${f} ${n === 1 ? "build" : "builds"}. Use the arrow keys to flip through.`),
   lost: "That process doesn't exist. Press Esc to go back to the desktop.",
 };

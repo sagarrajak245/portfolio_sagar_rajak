@@ -46,7 +46,7 @@ function bubbleStyle(spot, height) {
 
 function BotLayer() {
   const { pathname } = useLocation();
-  const { focus } = useBotState();
+  const { focus, say } = useBotState();
   const caps = useCapabilities();
   const wide = useMediaQuery("(min-width: 768px)");
   const idle = useIdle(caps.canRun3D);
@@ -56,6 +56,7 @@ function BotLayer() {
   const { spot, moveMs, facing, act, open, line, onActionDone, onBotClick } = useBotDirector({
     pathname,
     focus,
+    say,
     wide,
     reducedMotion: caps.reducedMotion,
   });

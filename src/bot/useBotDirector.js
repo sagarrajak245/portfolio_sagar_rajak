@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { BOT_LINES } from "../constants/bot";
+import { botStore } from "./botStore";
 import { APPS } from "../os/apps";
 
 export const STAGE = { w: 200, h: 240 };
@@ -76,7 +77,7 @@ function lineFor(pathname, focus, tip) {
 
 // The bot's state machine: idle -> walk to a spot -> arrival gesture -> idle.
 // Leaving the desktop docks it in the corner, where clicks cycle tips.
-export default function useBotDirector({ pathname, focus, wide, reducedMotion }) {
+export default function useBotDirector({ pathname, focus, say, wide, reducedMotion }) {
   const [spot, setSpot] = useState(null);
   const [moveMs, setMoveMs] = useState(0);
   const [facing, setFacing] = useState(0);
@@ -147,11 +148,17 @@ export default function useBotDirector({ pathname, focus, wide, reducedMotion })
     setOpen(true);
   }, [pathname]);
 
+  // A line from the app (selected commit, project, filter) pops the bubble.
+  const said = say && say.path === pathname ? say : null;
+  useEffect(() => {
+    if (said) setOpen(true);
+  }, [said]);
+
   useEffect(() => {
     if (!open || pathname === "/") return undefined;
     const t = setTimeout(() => setOpen(false), BUBBLE_MS);
     return () => clearTimeout(t);
-  }, [open, tip, pathname]);
+  }, [open, tip, pathname, said]);
 
   const onActionDone = useCallback(
     (id) => {
@@ -166,10 +173,12 @@ export default function useBotDirector({ pathname, focus, wide, reducedMotion })
       setOpen(true);
       return;
     }
-    if (open) setTip((n) => n + 1);
+    // A click after an app line goes back to the route's own tips.
+    if (said) botStore.say(null);
+    else if (open) setTip((n) => n + 1);
     setOpen(true);
     play("Yes");
-  }, [pathname, open, play]);
+  }, [pathname, open, said, play]);
 
   return {
     spot,
@@ -177,7 +186,7 @@ export default function useBotDirector({ pathname, focus, wide, reducedMotion })
     facing,
     act,
     open,
-    line: lineFor(pathname, focus, tip),
+    line: said ? said.text : lineFor(pathname, focus, tip),
     onActionDone,
     onBotClick,
   };
