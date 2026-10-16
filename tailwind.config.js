@@ -1,33 +1,27 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      keyframes: {
-        shine: {
-          '0%': { backgroundPosition: '200%' },
-          '100%': { backgroundPosition: '-200%' },
-        },
-      },
       colors: {
-        'cyber-blue': '#0891b2',
-        'cyber-purple': '#7c3aed',
-        'cyber-pink': '#ff0054',
-        'cyber-green': '#a7c957',
-        'cyber-silver': '#ced4da',
-        'glass-white': 'rgba(255, 255, 255, 0.05)',
-        'glass-dark': 'rgba(0, 0, 0, 0.3)',
+        ink: "#0B0F1C",
+        surface: "#121829",
+        raised: "#182036",
+        line: "#1F2740",
+        text: "#E7E9F2",
+        muted: "#8B92AB",
+        signal: "#5CE1E6",
+        violet: "#A78BFA",
       },
-      animation: {
-        shine: 'shine 1.5s linear',
+      fontFamily: {
+        display: ['"Bricolage Grotesque"', "Inter", "sans-serif"],
+        sans: ["Inter", "system-ui", "sans-serif"],
+        mono: ['"JetBrains Mono"', "ui-monospace", "monospace"],
+      },
+      maxWidth: {
+        prose: "68ch",
       },
     },
   },
-  plugins: [require('daisyui')],
-  daisyui: {
-    themes: ["light", "dark"],
-  },
-}
+  plugins: [],
+};

@@ -1,85 +1,79 @@
-import { motion } from 'framer-motion';
-import { Building2, Calendar, MapPin } from 'lucide-react';
-import { useInView } from 'react-intersection-observer';
-import { EXPERIENCES } from '../constants/index';
-import GlassCard from '../ui/GlassCard';
+import { AIVIUE, EXPERIENCES } from "../constants";
+import SectionHeading from "../ui/SectionHeading";
 
-const Experience = () => {
-  const [ref, inView] = useInView({ threshold: 0.3, triggerOnce: true });
-
+function Experience() {
   return (
-    <section id="experience" className="py-20 px-4 sm:px-6">
-      <div className="max-w-6xl mx-auto">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 font-cyber">
-            <span className="bg-gradient-to-r from-stone-100 to-stone-500 bg-clip-text text-transparent">
-              Experience
-            </span>
-          </h2>
-        </motion.div>
+    <div className="section">
+      <SectionHeading title="Experience">
+        Most of my work lives in production systems that real customers depend on.
+      </SectionHeading>
 
-        <div>
-          <div className="space-y-12">
-            {EXPERIENCES.map((exp, index) => (
-              <motion.div
-                key={`${exp.company}-${index}`}
-                initial={{ opacity: 0, x: -50 }}
-                animate={inView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
-              >
-                <GlassCard className="group rounded-none z-10">
-                  <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between mb-4">
-                    <div className="space-y-2">
-                      <h3 className="text-xl sm:text-2xl font-bold text-white transition-colors duration-300">
-                        {exp.role}
-                      </h3>
-                      <div className="flex items-center gap-2 flex-wrap">
-                        <Building2 className="text-cyan-400" size={20} />
-                        <span className="text-cyan-400 font-semibold">{exp.company}</span>
-                      </div>
-                    </div>
-                    <div className="flex flex-col sm:items-end gap-2">
-                      <div className="flex items-center gap-2 text-gray-300">
-                        <Calendar size={16} />
-                        <span className="text-sm">{exp.year}</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-gray-300">
-                        <MapPin size={16} />
-                        <span className="text-sm">Remote / Onsite</span>
-                      </div>
-                    </div>
-                  </div>
+      <article className="relative overflow-hidden rounded-3xl border border-line bg-surface">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-32 -top-32 h-80 w-80 rounded-full bg-violet/15 blur-3xl"
+        />
+        <div className="relative p-6 sm:p-10">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
+            <div>
+              <h3 className="text-3xl font-semibold tracking-tight text-white md:text-4xl">{AIVIUE.company}</h3>
+              <p className="mt-1 text-signal">{AIVIUE.role}</p>
+            </div>
+            <p className="text-sm text-muted">{AIVIUE.period}</p>
+          </div>
 
-                  <ul className="list-disc list-inside text-gray-300 mb-4 leading-relaxed space-y-2">
-                    {exp.description.map((point, idx) => (
-                      <li key={idx}>{point}</li>
-                    ))}
-                  </ul>
+          <p className="mt-6 max-w-3xl text-lg leading-relaxed text-text/90">{AIVIUE.lead}</p>
 
-                  <div className="flex flex-wrap gap-2">
-                    {exp.technologies.map((tech, idx) => (
-                      <span
-                        key={idx}
-                        className="px-3 py-1 text-sm bg-cyber-blue/20 text-white font-extralight rounded-full border border-cyber-blue/40"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </GlassCard>
-              </motion.div>
+          <div className="mt-10 grid gap-x-10 gap-y-8 md:grid-cols-2">
+            {AIVIUE.contributions.map((c) => (
+              <div key={c.title} className="border-l border-line pl-5">
+                <h4 className="font-display text-lg font-semibold text-white">{c.title}</h4>
+                <p className="mt-2 text-sm leading-relaxed text-muted">{c.body}</p>
+              </div>
             ))}
           </div>
+
+          <ul className="mt-10 flex flex-wrap gap-2" aria-label="Aiviue stack">
+            {AIVIUE.tech.map((t) => (
+              <li key={t} className="chip">
+                {t}
+              </li>
+            ))}
+          </ul>
         </div>
+      </article>
+
+      <div className="mt-6 grid gap-6 md:grid-cols-2">
+        {EXPERIENCES.map((exp) => (
+          <article key={exp.company} className="flex flex-col rounded-3xl border border-line p-6 sm:p-8">
+            <div className="flex flex-wrap items-baseline justify-between gap-2">
+              <h3 className="text-2xl font-semibold tracking-tight text-white">{exp.company}</h3>
+              <p className="text-sm text-muted">{exp.period}</p>
+            </div>
+            <p className="mt-1 text-signal">
+              {exp.role}
+              {exp.note && <span className="text-muted"> — {exp.note}</span>}
+            </p>
+            <ul className="mt-5 flex-1 space-y-3 text-sm leading-relaxed text-text/80">
+              {exp.points.map((p) => (
+                <li key={p} className="flex gap-3">
+                  <span aria-hidden="true" className="mt-2 h-1 w-1 shrink-0 rounded-full bg-signal" />
+                  {p}
+                </li>
+              ))}
+            </ul>
+            <ul className="mt-6 flex flex-wrap gap-2" aria-label={`${exp.company} stack`}>
+              {exp.tech.map((t) => (
+                <li key={t} className="chip">
+                  {t}
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
       </div>
-    </section>
+    </div>
   );
-};
+}
 
 export default Experience;

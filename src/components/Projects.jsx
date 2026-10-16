@@ -1,219 +1,193 @@
 /* eslint-disable react/prop-types */
-import { motion } from 'framer-motion';
-import { gsap } from 'gsap';
-import { useEffect, useRef, useState } from 'react';
-import { PROJECTS } from '../constants';
+import { AnimatePresence, motion } from "framer-motion";
+import { ExternalLink } from "lucide-react";
+import { useState } from "react";
+import { FaGithub } from "react-icons/fa";
+import { PROJECT_FILTERS, PROJECTS } from "../constants";
+import ProjectCover from "../ui/ProjectCover";
+import SectionHeading from "../ui/SectionHeading";
 
-// Helper to map PROJECTS to items
-const mapProjectsToGridItems = (projects) =>
-  projects.map((p, i) => ({
-    image: p.image,
-    title: p.title,
-    subtitle: p.description,
-    handle: p.github ? "View on GitHub" : "",
-    url: p.github,
-    tech: p.technologies,
-    borderColor: '#0891b2',
-    gradient: `linear-gradient(${150 + (i % 3) * 30}deg, #0891b2, #000)`,
-  }));
+const MAX_CHIPS = 6;
 
-// ✅ ProjectCard with lazy-loading images
-const ProjectCard = ({ c, handleCardClick, handleCardMove }) => {
-  const [loaded, setLoaded] = useState(false);
-
+function Cover({ project }) {
+  if (project.cover) {
+    return <ProjectCover variant={project.cover} title={project.title} />;
+  }
+  // Screenshots come in every aspect ratio. Show the whole image, and fill
+  // the frame behind it with a blurred copy so nothing is cropped or boxed.
   return (
-    <article
-      onMouseMove={handleCardMove}
-      onClick={() => handleCardClick(c.url)}
-      className="group relative flex flex-col w-full max-w-[400px] rounded-[20px] overflow-hidden border-2 border-transparent transition-colors duration-300 cursor-pointer"
-      style={{
-        "--card-border": c.borderColor || "transparent",
-        background: c.gradient,
-        "--spotlight-color": "rgba(255,255,255,0.3)",
-      }}
-    >
-      {/* Spotlight Hover */}
-      <div
-        className="absolute inset-0 pointer-events-none transition-opacity duration-500 z-20 opacity-0 group-hover:opacity-100"
-        style={{
-          background:
-            "radial-gradient(circle at var(--mouse-x) var(--mouse-y), var(--spotlight-color), transparent 70%)",
-        }}
+    <div className="relative h-full w-full overflow-hidden bg-surface">
+      <img
+        src={project.image}
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 h-full w-full scale-125 object-cover opacity-50 blur-2xl"
       />
-
-      {/* Image with Lazy Loading */}
-      <div className="relative z-10 overflow-hidden rounded-t-[20px] aspect-[4/3] p-2 bg-neutral-900">
-        {!loaded && (
-          <div className="absolute inset-0 bg-neutral-800 animate-pulse" />
-        )}
-        <img
-          src={c.image}
-          alt={c.title}
-          loading="lazy"
-          onLoad={() => setLoaded(true)}
-          className={`w-full h-full object-cover transition-opacity duration-500 ${loaded ? 'opacity-100' : 'opacity-0'}`}
-        />
-      </div>
-
-      {/* Text Content */}
-      <footer className="relative z-10 p-4 text-white font-sans flex flex-col gap-2">
-        <h3 className="text-lg font-bold">{c.title}</h3>
-
-        {Array.isArray(c.subtitle) ? (
-          <ul className="text-sm opacity-85 list-disc list-inside space-y-1">
-            {c.subtitle.map((point, idx) => (
-              <li key={idx}>{point}</li>
-            ))}
-          </ul>
-        ) : (
-          <p className="text-sm opacity-85">{c.subtitle}</p>
-        )}
-
-        {c.tech && (
-          <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-lg p-2 flex flex-wrap gap-2">
-            {c.tech.map((t, idx) => (
-              <span key={idx} className="text-xs text-white/80">{t}</span>
-            ))}
-          </div>
-        )}
-        {c.handle && (
-          <a
-            href={c.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-cyan-300 underline text-sm mt-1"
-          >
-            {c.handle}
-          </a>
-        )}
-      </footer>
-    </article>
-  )
+      <img
+        src={project.image}
+        alt={`Screenshot of ${project.title}`}
+        loading="lazy"
+        className="absolute inset-0 h-full w-full object-contain p-3 drop-shadow-[0_8px_24px_rgba(0,0,0,0.5)]"
+      />
+    </div>
+  );
 }
 
-// ✅ Main grid container
+function Links({ project }) {
+  return (
+    <div className="flex flex-wrap gap-2">
+      {project.github && (
+        <a
+          href={project.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-ghost px-4 py-2"
+          aria-label={`${project.title} source code on GitHub`}
+        >
+          <FaGithub size={15} aria-hidden="true" />
+          Code
+        </a>
+      )}
+      {project.demo && (
+        <a
+          href={project.demo}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-ghost px-4 py-2"
+          aria-label={`Live demo of ${project.title}`}
+        >
+          <ExternalLink size={15} aria-hidden="true" />
+          Live demo
+        </a>
+      )}
+    </div>
+  );
+}
+
+function Chips({ tech, limit = MAX_CHIPS }) {
+  const shown = tech.slice(0, limit);
+  const rest = tech.length - shown.length;
+  return (
+    <ul className="flex flex-wrap gap-1.5" aria-label="Tech used">
+      {shown.map((t) => (
+        <li key={t} className="chip">
+          {t}
+        </li>
+      ))}
+      {rest > 0 && <li className="chip">+{rest}</li>}
+    </ul>
+  );
+}
+
+function FeaturedCard({ project }) {
+  return (
+    <article className="grid overflow-hidden rounded-3xl border border-line bg-surface lg:grid-cols-[1.1fr_1fr]">
+      <div className="aspect-[16/10] border-b border-line lg:aspect-auto lg:border-b-0 lg:border-r">
+        <Cover project={project} />
+      </div>
+      <div className="flex flex-col gap-5 p-6 sm:p-8">
+        <p className="text-sm text-signal">Featured project · {project.category}</p>
+        <h3 className="-mt-2 text-3xl font-semibold tracking-tight text-white">{project.title}</h3>
+        <p className="text-lg leading-relaxed text-text/85">{project.summary}</p>
+        <ul className="space-y-2.5 text-sm leading-relaxed text-muted">
+          {project.highlights.map((h) => (
+            <li key={h} className="flex gap-3">
+              <span aria-hidden="true" className="mt-2 h-1 w-1 shrink-0 rounded-full bg-signal" />
+              {h}
+            </li>
+          ))}
+        </ul>
+        <Chips tech={project.tech} limit={8} />
+        <div className="mt-auto pt-2">
+          <Links project={project} />
+        </div>
+      </div>
+    </article>
+  );
+}
+
+function ProjectCard({ project }) {
+  return (
+    <article className="group flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-surface transition-colors duration-300 hover:border-[#2E3A5C]">
+      <div className="aspect-[16/10] border-b border-line">
+        <Cover project={project} />
+      </div>
+      <div className="flex flex-1 flex-col gap-4 p-6">
+        <div>
+          <p className="text-xs text-muted">{project.category}</p>
+          <h3 className="mt-1 text-xl font-semibold tracking-tight text-white">{project.title}</h3>
+        </div>
+        <p className="text-sm leading-relaxed text-text/80">{project.summary}</p>
+        <ul className="space-y-2 text-sm leading-relaxed text-muted">
+          {project.highlights.slice(0, 2).map((h) => (
+            <li key={h} className="flex gap-3">
+              <span aria-hidden="true" className="mt-2 h-1 w-1 shrink-0 rounded-full bg-signal/70" />
+              {h}
+            </li>
+          ))}
+        </ul>
+        <div className="mt-auto flex flex-col gap-4 pt-2">
+          <Chips tech={project.tech} />
+          <Links project={project} />
+        </div>
+      </div>
+    </article>
+  );
+}
+
 function Projects() {
-  const items = mapProjectsToGridItems(PROJECTS);
-  const rootRef = useRef(null);
-  const fadeRef = useRef(null);
-  const setX = useRef(null);
-  const setY = useRef(null);
-  const pos = useRef({ x: 0, y: 0 });
-
-  const radius = 300;
-  const damping = 0.45;
-  const fadeOut = 0.6;
-  const ease = "power3.out";
-
-  useEffect(() => {
-    const el = rootRef.current;
-    if (!el) return;
-    setX.current = gsap.quickSetter(el, "--x", "px");
-    setY.current = gsap.quickSetter(el, "--y", "px");
-    const { width, height } = el.getBoundingClientRect();
-    pos.current = { x: width / 2, y: height / 2 };
-    setX.current(pos.current.x);
-    setY.current(pos.current.y);
-  }, []);
-
-  const moveTo = (x, y) => {
-    gsap.to(pos.current, {
-      x,
-      y,
-      duration: damping,
-      ease,
-      onUpdate: () => {
-        setX.current?.(pos.current.x);
-        setY.current?.(pos.current.y);
-      },
-      overwrite: true,
-    });
-  };
-
-  const handleMove = (e) => {
-    const r = rootRef.current.getBoundingClientRect();
-    moveTo(e.clientX - r.left, e.clientY - r.top);
-    gsap.to(fadeRef.current, { opacity: 0, duration: 0.25, overwrite: true });
-  };
-
-  const handleLeave = () => {
-    gsap.to(fadeRef.current, { opacity: 1, duration: fadeOut, overwrite: true });
-  };
-
-  const handleCardClick = (url) => {
-    if (url) window.open(url, "_blank", "noopener,noreferrer");
-  };
-
-  const handleCardMove = (e) => {
-    const c = e.currentTarget;
-    const rect = c.getBoundingClientRect();
-    c.style.setProperty("--mouse-x", `${e.clientX - rect.left}px`);
-    c.style.setProperty("--mouse-y", `${e.clientY - rect.top}px`);
-  };
+  const [filter, setFilter] = useState("All");
+  const visible = PROJECTS.filter((p) => filter === "All" || p.category === filter);
 
   return (
-    <div className="border-b border-neutral-900 pb-20">
-      <motion.h1
-        whileInView={{ opacity: 1, y: 0 }}
-        initial={{ opacity: 0, y: -100 }}
-        transition={{ duration: 1 }}
-        className='my-20 text-center md:text-6xl font-semibold bg-gradient-to-r from-stone-100 to-stone-700 bg-clip-text text-transparent text-4xl'
-      >
-        Projects
-      </motion.h1>
+    <div className="section">
+      <SectionHeading title="Projects">
+        Agents, backends and models I&apos;ve built outside work. Each one links to its source.
+      </SectionHeading>
 
-      <div
-        ref={rootRef}
-        onPointerMove={handleMove}
-        onPointerLeave={handleLeave}
-        className="relative w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 md:px-10"
-        style={{
-          "--r": `${radius}px`,
-          "--x": "50%",
-          "--y": "50%",
-        }}
-      >
-        {items.map((c, i) => (
-          <ProjectCard
-            key={i}
-            c={c}
-            handleCardClick={handleCardClick}
-            handleCardMove={handleCardMove}
-          />
-        ))}
-
-        {/* Dark spotlight layer */}
-        <div
-          className="absolute inset-0 pointer-events-none z-30"
-          style={{
-            backdropFilter: "grayscale(1) brightness(0.78)",
-            WebkitBackdropFilter: "grayscale(1) brightness(0.78)",
-            background: "rgba(0,0,0,0.001)",
-            maskImage:
-              "radial-gradient(circle var(--r) at var(--x) var(--y),transparent 0%,transparent 15%,rgba(0,0,0,0.10) 30%,rgba(0,0,0,0.22)45%,rgba(0,0,0,0.35)60%,rgba(0,0,0,0.50)75%,rgba(0,0,0,0.68)88%,white 100%)",
-            WebkitMaskImage:
-              "radial-gradient(circle var(--r) at var(--x) var(--y),transparent 0%,transparent 15%,rgba(0,0,0,0.10) 30%,rgba(0,0,0,0.22)45%,rgba(0,0,0,0.35)60%,rgba(0,0,0,0.50)75%,rgba(0,0,0,0.68)88%,white 100%)",
-          }}
-        />
-
-        {/* Fade-in mask on leave */}
-        <div
-          ref={fadeRef}
-          className="absolute inset-0 pointer-events-none transition-opacity duration-[250ms] z-40"
-          style={{
-            backdropFilter: "grayscale(1) brightness(0.78)",
-            WebkitBackdropFilter: "grayscale(1) brightness(0.78)",
-            background: "rgba(0,0,0,0.001)",
-            maskImage:
-              "radial-gradient(circle var(--r) at var(--x) var(--y),white 0%,white 15%,rgba(255,255,255,0.90)30%,rgba(255,255,255,0.78)45%,rgba(255,255,255,0.65)60%,rgba(255,255,255,0.50)75%,rgba(255,255,255,0.32)88%,transparent 100%)",
-            WebkitMaskImage:
-              "radial-gradient(circle var(--r) at var(--x) var(--y),white 0%,white 15%,rgba(255,255,255,0.90)30%,rgba(255,255,255,0.78)45%,rgba(255,255,255,0.65)60%,rgba(255,255,255,0.50)75%,rgba(255,255,255,0.32)88%,transparent 100%)",
-            opacity: 1,
-          }}
-        />
+      <div role="tablist" aria-label="Filter projects" className="mb-8 flex flex-wrap gap-2">
+        {PROJECT_FILTERS.map((f) => {
+          const count = f === "All" ? PROJECTS.length : PROJECTS.filter((p) => p.category === f).length;
+          const selected = filter === f;
+          return (
+            <button
+              key={f}
+              type="button"
+              role="tab"
+              aria-selected={selected}
+              onClick={() => setFilter(f)}
+              className={`rounded-full border px-4 py-1.5 text-sm transition-colors ${
+                selected
+                  ? "border-signal bg-signal/10 text-white"
+                  : "border-line text-muted hover:border-[#2E3A5C] hover:text-white"
+              }`}
+            >
+              {f}
+              <span className={`ml-2 text-xs ${selected ? "text-signal" : "text-muted/70"}`}>{count}</span>
+            </button>
+          );
+        })}
       </div>
+
+      <motion.div layout className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <AnimatePresence mode="popLayout" initial={false}>
+          {visible.map((p) => (
+            <motion.div
+              key={p.title}
+              layout
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.98 }}
+              transition={{ duration: 0.25 }}
+              className={p.featured ? "md:col-span-2 lg:col-span-3" : ""}
+            >
+              {p.featured ? <FeaturedCard project={p} /> : <ProjectCard project={p} />}
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </motion.div>
     </div>
-  )
+  );
 }
 
 export default Projects;
